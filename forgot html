@@ -52,52 +52,37 @@
         .forgot-box button:hover {
             background-color: #00c6ff;
         }
-        .links {
+        .forgot-box .back-link {
+            display: block;
             text-align: center;
             margin-top: 15px;
-        }
-        .links a {
             color: #4facfe;
             text-decoration: none;
         }
-        .links a:hover {
+        .forgot-box .back-link:hover {
             text-decoration: underline;
         }
         footer {
-            background: #4facfe;
-            color: white;
             text-align: center;
-            padding: 15px;
+            padding: 10px;
+            background: #f0f0f0;
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header style="background:#4facfe; color:white; padding:15px 20px; display:flex; justify-content:space-between; align-items:center;">
-        <div class="logo" style="font-weight:bold;">MCQ CLINIC</div>
-        <nav>
-            <a href="index.html" style="color:white; margin-right:15px; text-decoration:none;">Home</a>
-            <a href="mdcat.html" style="color:white; text-decoration:none;">MDCAT</a>
-        </nav>
-    </header>
-
-    <!-- FORGOT PASSWORD FORM -->
     <main>
         <div class="forgot-box">
             <h2>Forgot Password</h2>
-            <p style="text-align:center;">Enter your email and we’ll send you a reset link.</p>
+            <p>Please enter your email to reset your password.</p>
             <form action="#" method="post">
-                <input type="email" placeholder="Your Email" required>
+                <input type="email" placeholder="Enter your email" required>
                 <button type="submit">Send Reset Link</button>
             </form>
-            <div class="links">
-                <a href="login.html">Back to Login</a>
-            </div>
+            <a href="login.html" class="back-link">Back to Login</a>
         </div>
     </main>
 
-    <!-- FOOTER -->
     <footer>
         <p>© 2025 MCQ CLINIC. All rights reserved.</p>
     </footer>
