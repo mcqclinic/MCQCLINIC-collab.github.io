@@ -6,13 +6,19 @@
     <title>Register | MCQ CLINIC</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('background.jpg') no-repeat center center/cover;
+            margin: 0;
+            padding: 0;
+        }
         .register-container {
             max-width: 400px;
-            margin: 50px auto;
-            background: white;
+            margin: 80px auto;
+            background: rgba(255, 255, 255, 0.9);
             padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
         }
         .register-container h2 {
             text-align: center;
@@ -25,8 +31,12 @@
             border: 1px solid #ddd;
             border-radius: 6px;
         }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
         .register-container button {
-            width: 100%;
+            flex: 1;
             padding: 10px;
             background: #0066cc;
             color: white;
@@ -38,6 +48,19 @@
         .register-container button:hover {
             background: #004999;
         }
+        .forgot {
+            text-align: right;
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }
+        .forgot a {
+            font-size: 14px;
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .forgot a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -45,19 +68,14 @@
 <header>
     <div class="logo">MCQ CLINIC</div>
     <nav>
-        <a href="medical.html">MDCAT</a>
-        <a href="#">Nursing</a>
-        <a href="#">High School</a>
-        <a href="#">Grad School</a>
-        <a href="#">Accounting</a>
-        <a href="#">Finance</a>
-        <a href="#">Legal</a>
-        <a href="#">Pharmacy</a>
+        <a href="#">Biology</a>
+        <a href="#">Chemistry</a>
+        <a href="#">Physics</a>
+        <a href="#">English</a>
     </nav>
-   <div class="header-buttons">
-    <a href="register.html">Register</a>
-    <a href="login.html">Login</a>
-
+    <div class="header-buttons">
+        <a href="register.html">Register</a>
+        <a href="login.html">Login</a>
     </div>
 </header>
 
@@ -68,7 +86,15 @@
         <input type="email" placeholder="Email Address" required>
         <input type="password" placeholder="Password" required>
         <input type="password" placeholder="Confirm Password" required>
-        <button type="submit">Register</button>
+        
+        <div class="forgot">
+            <a href="#">Forgot Password?</a>
+        </div>
+
+        <div class="btn-group">
+            <button type="submit">Register</button>
+            <button type="button" onclick="window.location.href='login.html'">Login</button>
+        </div>
     </form>
 </div>
 
