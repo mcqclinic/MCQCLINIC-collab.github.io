@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCQ CLINIC | Home</title>
+    <title>MCQ CLINIC | Learn Smarter</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
         }
         header {
-            background: #4facfe;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
             color: white;
             padding: 15px 20px;
             display: flex;
@@ -19,91 +20,56 @@
             align-items: center;
         }
         header .logo {
-            font-size: 1.5em;
             font-weight: bold;
+            font-size: 1.5em;
         }
         nav a {
             color: white;
+            margin-right: 15px;
             text-decoration: none;
-            margin: 0 10px;
+            font-weight: bold;
         }
         nav a:hover {
             text-decoration: underline;
         }
         .header-buttons a {
             color: white;
-            background: #00c6ff;
-            padding: 8px 12px;
-            border-radius: 5px;
             text-decoration: none;
-            margin-left: 8px;
+            margin-left: 15px;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 12px;
+            border-radius: 5px;
         }
         .header-buttons a:hover {
-            background: #009bd1;
+            background: rgba(255,255,255,0.4);
         }
         .hero {
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-            color: white;
             text-align: center;
-            padding: 80px 20px;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #00f2fe, #4facfe);
+            color: white;
         }
         .hero h1 {
             font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .cta {
+            display: inline-block;
+            background: white;
+            color: #4facfe;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            text-decoration: none;
+        }
+        .cta:hover {
+            background: #f0f0f0;
         }
         .categories {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 30px;
-            gap: 20px;
-        }
-        .category {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            width: 250px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .category h2 {
-            color: #4facfe;
-        }
-        footer {
-            background: #4facfe;
-            color: white;
-            text-align: center;
-            padding: 15px;
-        }
-    </style>
-</head>
-<body>
-    <!-- HEADER -->
-    <header>
-        <div class="logo">MCQ CLINIC</div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="mdcat.html">MDCAT</a>
-            <a href="#">Nursing</a>
-            <a href="#">High School</a>
-            <a href="#">Grad School</a>
-            <a href="#">Accounting</a>
-            <a href="#">Finance</a>
-            <a href="#">Legal</a>
-            <a href="#">Pharmacy</a>
-        </nav>
-        <div class="header-buttons">
-            <a href="register.html">Register</a>
-            <a href="login.html">Login</a>
-        </div>
-    </header>
-
-    <!-- HERO -->
-    <section class="hero">
-        <h1>We Turn Complex Learning Into Simple Success</h1>
-        <p>MCQ CLINIC helps MDCAT & other students master tough concepts with ease.</p>
-        <a href="mdcat.html" style="background:white;color:#4facfe;padding:10px 20px;border-radius:5px;text-decoration:none;">Explore MDCAT</a>
-    </section>
-
-    <!-- CATEGORIES -->
-    <section class="categories">
-        <div clas
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            g
