@@ -3,15 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCQ CLINIC | Learn Smarter</title>
+    <title>MCQ CLINIC | Home</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background: #4facfe;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .header-buttons a {
+            color: white;
+            background: #00c6ff;
+            padding: 8px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-left: 8px;
+        }
+        .header-buttons a:hover {
+            background: #009bd1;
+        }
+        .hero {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+        }
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 30px;
+            gap: 20px;
+        }
+        .category {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .category h2 {
+            color: #4facfe;
+        }
+        footer {
+            background: #4facfe;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
 </head>
 <body>
     <!-- HEADER -->
     <header>
         <div class="logo">MCQ CLINIC</div>
         <nav>
-         <a href="mdcat.html">MDCAT</a>
+            <a href="index.html">Home</a>
+            <a href="mdcat.html">MDCAT</a>
             <a href="#">Nursing</a>
             <a href="#">High School</a>
             <a href="#">Grad School</a>
@@ -22,58 +93,17 @@
         </nav>
         <div class="header-buttons">
             <a href="register.html">Register</a>
-
-           
-          <a href="login.html">Login</a>
-
+            <a href="login.html">Login</a>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- HERO -->
     <section class="hero">
         <h1>We Turn Complex Learning Into Simple Success</h1>
-        <p>MCQ CLINIC empowers students and professionals to master tough concepts with confidence.</p>
-        <a class="cta" href="#">Explore MCQ CLINIC Courses</a>
+        <p>MCQ CLINIC helps MDCAT & other students master tough concepts with ease.</p>
+        <a href="mdcat.html" style="background:white;color:#4facfe;padding:10px 20px;border-radius:5px;text-decoration:none;">Explore MDCAT</a>
     </section>
 
-    <!-- CATEGORY SECTION -->
+    <!-- CATEGORIES -->
     <section class="categories">
-        <div class="category">
-            <h2>Medical Mastery</h2>
-            <p>Prepare for medical exams with high-yield questions and explanations.</p>
-            <a href="#">Learn More</a>
-        </div>
-        <div class="category">
-            <h2>Nursing Success</h2>
-            <p>Pass your nursing boards with practice that feels like the real thing.</p>
-            <a href="#">Learn More</a>
-        </div>
-        <div class="category">
-            <h2>High School Prep</h2>
-            <p>Boost SAT, ACT, and other test scores with proven methods.</p>
-            <a href="#">Learn More</a>
-        </div>
-        <div class="category">
-            <h2>Grad School Exams</h2>
-            <p>Master GRE, GMAT, and more with MCQ CLINIC resources.</p>
-            <a href="#">Learn More</a>
-        </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section class="testimonials">
-        <h2>What Our Learners Say</h2>
-        <blockquote>
-            “MCQ CLINIC helped me pass my exam on the first try. The explanations were a game-changer!” — Sarah K., Nursing Student
-        </blockquote>
-        <blockquote>
-            “The practice questions were so close to the real exam that I felt completely prepared.” — James L., Medical Graduate
-        </blockquote>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>© 2025 MCQ CLINIC. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+        <div clas
