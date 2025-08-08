@@ -3,104 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register | MCQ CLINIC</title>
+    <title>MCQ CLINIC | Register</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: url('background.jpg') no-repeat center center/cover;
             margin: 0;
-            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        .register-container {
-            max-width: 400px;
-            margin: 80px auto;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 25px;
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .register-box {
+            background: white;
+            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            max-width: 350px;
+            width: 100%;
         }
-        .register-container h2 {
+        .register-box h2 {
             text-align: center;
             margin-bottom: 20px;
+            color: #333;
         }
-        .register-container input {
+        .register-box input {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin: 8px 0;
-            border: 1px solid #ddd;
-            border-radius: 6px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
-        .btn-group {
-            display: flex;
-            gap: 10px;
-        }
-        .register-container button {
-            flex: 1;
-            padding: 10px;
-            background: #0066cc;
+        .register-box button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4facfe;
             color: white;
             border: none;
-            border-radius: 6px;
-            cursor: pointer;
+            border-radius: 5px;
             font-size: 16px;
+            cursor: pointer;
         }
-        .register-container button:hover {
-            background: #004999;
+        .register-box button:hover {
+            background-color: #00c6ff;
         }
-        .forgot {
-            text-align: right;
-            margin-top: -5px;
-            margin-bottom: 10px;
-        }
-        .forgot a {
+        .register-box .login-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
             font-size: 14px;
-            color: #0066cc;
+        }
+        .register-box .login-link a {
+            color: #4facfe;
             text-decoration: none;
         }
-        .forgot a:hover {
+        .register-box .login-link a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
-
-<header>
-    <div class="logo">MCQ CLINIC</div>
-    <nav>
-        <a href="#">Biology</a>
-        <a href="#">Chemistry</a>
-        <a href="#">Physics</a>
-        <a href="#">English</a>
-    </nav>
-    <div class="header-buttons">
-        <a href="register.html">Register</a>
-        <a href="login.html">Login</a>
-    </div>
-</header>
-
-<div class="register-container">
-    <h2>Create Your Account</h2>
-    <form>
-        <input type="text" placeholder="Full Name" required>
-        <input type="email" placeholder="Email Address" required>
-        <input type="password" placeholder="Password" required>
-        <input type="password" placeholder="Confirm Password" required>
-        
-        <div class="forgot">
-            <a href="#">Forgot Password?</a>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">MCQ CLINIC</div>
+        <nav>
+            <a href="#">Medical</a>
+            <a href="#">Nursing</a>
+            <a href="#">High School</a>
+            <a href="#">Grad School</a>
+            <a href="#">Accounting</a>
+            <a href="#">Finance</a>
+            <a href="#">Legal</a>
+            <a href="#">Pharmacy</a>
+        </nav>
+        <div class="header-buttons">
+            <a href="register.html">Register</a>
+            <a href="login.html">Login</a>
         </div>
+    </header>
 
-        <div class="btn-group">
-            <button type="submit">Register</button>
-            <button type="button" onclick="window.location.href='login.html'">Login</button>
+    <!-- REGISTER FORM -->
+    <main>
+        <div class="register-box">
+            <h2>Create an Account</h2>
+            <form action="#" method="post">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
+                <button type="submit">Register</button>
+            </form>
+            <div class="login-link">
+                Already have an account? <a href="login.html">Login</a>
+            </div>
         </div>
-    </form>
-</div>
+    </main>
 
-<footer>
-    <p>© 2025 MCQ CLINIC. All rights reserved.</p>
-</footer>
-
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2025 MCQ CLINIC. All rights reserved.</p>
+    </footer>
 </body>
 </html>
