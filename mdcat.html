@@ -3,22 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCQ CLINIC | Medical</title>
+    <title>MDCAT | MCQ CLINIC</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+        header {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header .logo {
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+        nav a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .header-buttons a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 12px;
+            border-radius: 5px;
+        }
+        .header-buttons a:hover {
+            background: rgba(255,255,255,0.4);
+        }
+        .content {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+        .content h1 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .content p {
+            color: #555;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
     <!-- HEADER -->
     <header>
         <div class="logo">MCQ CLINIC</div>
         <nav>
-          <a href="#">MDCAT</a>
-            <a href="#">Nursing</a>
-            <a href="#">High School</a>
-            <a href="#">Grad School</a>
-            <a href="#">Accounting</a>
-            <a href="#">Finance</a>
-            <a href="#">Legal</a>
-            <a href="#">Pharmacy</a>
+            <a href="index.html">Home</a>
+            <a href="mdcat.html">MDCAT</a>
         </nav>
         <div class="header-buttons">
             <a href="register.html">Register</a>
@@ -26,34 +72,21 @@
         </div>
     </header>
 
-    <!-- PAGE CONTENT -->
-    <section class="hero">
-        <h1>Medical MCQs & Study Resources</h1>
-        <p>Practice high-yield questions and boost your medical exam preparation.</p>
-    </section>
+    <!-- MAIN CONTENT -->
+    <div class="content">
+        <h1>MDCAT Preparation</h1>
+        <p>Welcome to the MDCAT preparation section of MCQ CLINIC. Here you’ll find resources, practice questions, and detailed explanations to help you excel in your MDCAT exams.</p>
+        
+        <h2>Subjects Covered</h2>
+        <ul>
+            <li>Biology</li>
+            <li>Chemistry</li>
+            <li>Physics</li>
+            <li>English</li>
+        </ul>
 
-    <section class="categories">
-        <div class="category">
-            <h2>Biology</h2>
-            <p>Cover all essential topics for MDCAT biology.</p>
-            <a href="#">Start Biology MCQs</a>
-        </div>
-        <div class="category">
-            <h2>Chemistry</h2>
-            <p>Test your knowledge with exam-style chemistry questions.</p>
-            <a href="#">Start Chemistry MCQs</a>
-        </div>
-        <div class="category">
-            <h2>Physics</h2>
-            <p>Sharpen your problem-solving skills with physics MCQs.</p>
-            <a href="#">Start Physics MCQs</a>
-        </div>
-        <div class="category">
-            <h2>English</h2>
-            <p>Improve your English comprehension for medical entrance exams.</p>
-            <a href="#">Start English MCQs</a>
-        </div>
-    </section>
+        <p>Use our interactive tools to track your progress, take timed quizzes, and review detailed solutions to every question.</p>
+    </div>
 
     <!-- FOOTER -->
     <footer>
