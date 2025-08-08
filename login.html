@@ -53,39 +53,28 @@
         .login-box button:hover {
             background-color: #00c6ff;
         }
-        .forgot-password {
-            text-align: right;
-            margin-top: -5px;
-            margin-bottom: 10px;
-            font-size: 14px;
+        .links {
+            text-align: center;
+            margin-top: 15px;
         }
-        .forgot-password a {
+        .links a {
             color: #4facfe;
             text-decoration: none;
         }
-        .forgot-password a:hover {
+        .links a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
+
     <!-- HEADER -->
-    <header>
-        <div class="logo">MCQ CLINIC</div>
+    <header style="background:#4facfe; color:white; padding:15px 20px; display:flex; justify-content:space-between; align-items:center;">
+        <div class="logo" style="font-weight:bold;">MCQ CLINIC</div>
         <nav>
-            <a href="medical.html">MDCAT</a>
-            <a href="#">Nursing</a>
-            <a href="#">High School</a>
-            <a href="#">Grad School</a>
-            <a href="#">Accounting</a>
-            <a href="#">Finance</a>
-            <a href="#">Legal</a>
-            <a href="#">Pharmacy</a>
+            <a href="index.html" style="color:white; margin-right:15px; text-decoration:none;">Home</a>
+            <a href="mdcat.html" style="color:white; text-decoration:none;">MDCAT</a>
         </nav>
-        <div class="header-buttons">
-            <a href="register.html">Register</a>
-            <a href="login.html">Login</a>
-        </div>
     </header>
 
     <!-- LOGIN FORM -->
@@ -95,21 +84,19 @@
             <form action="#" method="post">
                 <input type="text" placeholder="Username or Email" required>
                 <input type="password" placeholder="Password" required>
-                <p style="text-align:center;">
-    <a href="forgot-password.html">Forgot Password?</a>
-</p>
-                <div class="forgot-password">
-                    <a href="forgot-password.html">Forgot Password?</a>
-                </div>
                 <button type="submit">Login</button>
             </form>
+            <div class="links">
+                <a href="forgot.html">Forgot Password?</a> |
+                <a href="register.html">Register</a>
+            </div>
         </div>
     </main>
 
     <!-- FOOTER -->
-    <footer>
+    <footer style="background:#4facfe; color:white; text-align:center; padding:15px;">
         <p>© 2025 MCQ CLINIC. All rights reserved.</p>
     </footer>
+
 </body>
 </html>
-
