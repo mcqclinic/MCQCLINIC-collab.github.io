@@ -53,6 +53,19 @@
         .login-box button:hover {
             background-color: #00c6ff;
         }
+        .forgot-password {
+            text-align: right;
+            margin-top: -5px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .forgot-password a {
+            color: #4facfe;
+            text-decoration: none;
+        }
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -69,10 +82,9 @@
             <a href="#">Legal</a>
             <a href="#">Pharmacy</a>
         </nav>
-   <div class="header-buttons">
-    <a href="register.html">Register</a>
-    <a href="login.html">Login</a>
-       
+        <div class="header-buttons">
+            <a href="register.html">Register</a>
+            <a href="login.html">Login</a>
         </div>
     </header>
 
@@ -83,6 +95,9 @@
             <form action="#" method="post">
                 <input type="text" placeholder="Username or Email" required>
                 <input type="password" placeholder="Password" required>
+                <div class="forgot-password">
+                    <a href="forgot-password.html">Forgot Password?</a>
+                </div>
                 <button type="submit">Login</button>
             </form>
         </div>
@@ -94,3 +109,4 @@
     </footer>
 </body>
 </html>
+
