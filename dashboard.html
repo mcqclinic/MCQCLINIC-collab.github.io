@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Clinic - Dashboard</title>
+    <!-- Inter Font from Google Fonts for a modern, clean look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN for utility-first styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for modern icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Custom Tailwind Configuration (optional, if you need to extend defaults) */
+        :root {
+            --color-primary: #3b82f6; /* Tailwind blue-500 */
+            --color-accent: #10b981; /* Tailwind emerald-500 */
+            --color-bg-light: #f9fafb; /* Tailwind gray-50 */
+            --color-text-dark: #1f2937; /* Tailwind gray-900 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-text-dark);
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+
+        /* Basic rounded corners applied globally for modern feel */
+        * {
+            border-radius: 0.5rem; /* Equivalent to Tailwind's rounded-lg or rounded-xl */
+        }
+
+        /* Animation for content */
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fade-in-up 1s ease-out forwards;
+        }
+
+        /* Responsive adjustments for navigation */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none; /* This hides the menu by default on mobile */
+                flex-direction: column;
+                width: 100%;
+                background-color: rgba(17, 24, 39, 0.9); /* gray-900/90 */
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 1rem 0;
+                border-radius: 0 0 0.5rem 0.5rem;
+            }
+            .nav-menu.active {
+                display: flex; /* This shows the menu when the hamburger is clicked */
+            }
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+                padding: 0.75rem 0;
+            }
+            .nav-menu li a {
+                display: block;
+            }
+            .menu-toggle {
+                display: block; /* Show hamburger icon */
+            }
+            .desktop-nav {
+                display: none; /* Hide desktop nav items on mobile */
+            }
+        }
+        @media (min-width: 769px) {
+            .nav-menu {
+                display: flex !important; /* Always show on desktop */
+            }
+            .menu-toggle {
+                display: none; /* Hide hamburger icon */
+            }
+            .desktop-nav {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <!-- Header Section for Dashboard -->
+    <header class="relative h-24 flex flex-row items-center justify-start px-8 fixed w-full top-0 text-white overflow-hidden bg-gray-900/80 shadow-lg z-50 backdrop-blur-sm">
+        <a href="index.html" class="text-white text-3xl font-bold tracking-wide hover:text-blue-400 transition duration-300">MCQ Clinic</a>
+        <!-- Hamburger menu for mobile -->
+        <button class="menu-toggle text-white text-3xl md:hidden focus:outline-none ml-auto">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-menu desktop-nav md:flex md:space-x-8 ml-auto">
+            <!-- No public navigation items here, only logged-in ones -->
+            <li id="nav-auth-link">
+                <a href="account.html" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group" id="login-link">Account<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a>
+            </li>
+            <li id="nav-register-logout-link">
+                <a href="#" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group" id="register-link">Logout<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a>
+            </li>
+        </ul>
+    </header>
+
+    <!-- Dashboard Main Content Section -->
+    <main id="dashboard-page-main" class="relative min-h-screen flex flex-col items-center justify-center text-white overflow-hidden py-20 px-8 pt-24" style="background-image: url('https://placehold.co/1920x1080/3b82f6/ffffff?text=MDCAT+Success+-+MCQ+Clinic'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 z-10 bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent"></div>
+
+        <div class="relative z-20 text-center p-8 bg-gray-900/60 rounded-xl shadow-2xl max-w-6xl mx-auto backdrop-blur-sm animate-fade-in-up">
+            <h2 class="text-5xl font-bold mb-12 text-blue-300">Welcome to Your Dashboard!</h2>
+            <p class="text-xl mb-12 opacity-90" id="welcome-message">Select a subject to begin your MCQ practice.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+                <!-- Quiz Topic Card: Biology -->
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col">
+                    <h3 class="text-3xl font-semibold mb-4 text-blue-700">Biology MCQs</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 flex-grow">Test your knowledge in Human Anatomy, Genetics, Botany, and Zoology.</p>
+                    <button class="start-quiz-btn bg-gradient-to-r from-emerald-500 to-emerald-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out self-center group" data-topic="biology-dashboard">
+                        Start Biology Quiz
+                        <i class="fas fa-play-circle ml-2 group-hover:rotate-6 transition-transform duration-300"></i>
+                    </button>
+                </div>
+                <!-- Quiz Topic Card: Chemistry -->
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col">
+                    <h3 class="text-3xl font-semibold mb-4 text-blue-700">Chemistry MCQs</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 flex-grow">Challenge yourself with Organic, Inorganic, and Physical Chemistry questions.</p>
+                    <button class="start-quiz-btn bg-gradient-to-r from-emerald-500 to-emerald-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out self-center group" data-topic="chemistry-dashboard">
+                        Start Chemistry Quiz
+                        <i class="fas fa-play-circle ml-2 group-hover:rotate-6 transition-transform duration-300"></i>
+                    </button>
+                </div>
+                <!-- Quiz Topic Card: Physics -->
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col">
+                    <h3 class="text-3xl font-semibold mb-4 text-blue-700">Physics MCQs</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 flex-grow">Conquer concepts from Mechanics, Waves, and Electromagnetism.</p>
+                    <button class="start-quiz-btn bg-gradient-to-r from-emerald-500 to-emerald-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out self-center group" data-topic="physics-dashboard">
+                        Start Physics Quiz
+                        <i class="fas fa-play-circle ml-2 group-hover:rotate-6 transition-transform duration-300"></i>
+                    </button>
+                </div>
+                <!-- NEW: Quiz Topic Card: English -->
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col">
+                    <h3 class="text-3xl font-semibold mb-4 text-blue-700">English MCQs</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 flex-grow">Enhance your verbal reasoning, grammar, and vocabulary with our English language quizzes.</p>
+                    <button class="start-quiz-btn bg-gradient-to-r from-emerald-500 to-emerald-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out self-center group" data-topic="english-dashboard">
+                        Start English Quiz
+                        <i class="fas fa-play-circle ml-2 group-hover:rotate-6 transition-transform duration-300"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-gray-300 py-10 text-center text-sm">
+        <p>&copy; 2025 MCQ Clinic. All Rights Reserved. Designed with <i class="fas fa-heart text-red-500 animate-pulse"></i> for MDCAT Aspirants.</p>
+        <div class="flex justify-center space-x-6 mt-4">
+            <a href="#" class="hover:text-white transition duration-200"><i class="fab fa-facebook-f text-lg"></i></a>
+            <a href="#" class="hover:text-white transition duration-200"><i class="fab fa-twitter text-lg"></i></a>
+            <a href="#" class="hover:text-white transition duration-200"><i class="fab fa-instagram text-lg"></i></a>
+            <a href="#" class="hover:text-white transition duration-200"><i class="fab fa-linkedin-in text-lg"></i></a>
+        </div>
+    </footer>
+
+    <!-- Custom Message Box Modal (reused from index.html) -->
+    <div id="custom-message-box" class="fixed inset-0 bg-black bg-opacity-50 z-[1001] flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white p-8 rounded-xl shadow-2xl max-w-md w-full text-center transform scale-95 transition-transform duration-300">
+            <i id="message-icon" class="text-6xl mb-4 text-blue-500"></i>
+            <p id="message-text" class="text-lg mb-6 text-gray-700 font-medium"></p>
+            <button id="close-message-box" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Got It!</button>
+        </div>
+    </div>
+
+    <script>
+        // Message Box elements - declared globally for accessibility
+        const messageBox = document.getElementById('custom-message-box');
+        const messageIcon = document.getElementById('message-icon');
+        const messageText = document.getElementById('message-text');
+        const closeMessageBoxBtn = document.getElementById('close-message-box');
+
+        /**
+         * Displays a custom message box with a specified message and type.
+         * @param {string} message - The message to display.
+         * @param {'info'|'success'|'error'} type - The type of message (influences icon and color).
+         */
+        const showMessageBox = (message, type = 'info') => {
+            messageText.innerHTML = message;
+            messageBox.classList.remove('hidden', 'opacity-0');
+            messageBox.classList.add('flex', 'opacity-100');
+
+            messageIcon.className = 'text-6xl mb-4';
+            if (type === 'success') {
+                messageIcon.classList.add('fas', 'fa-check-circle', 'text-emerald-500');
+            } else if (type === 'error') {
+                messageIcon.classList.add('fas', 'fa-times-circle', 'text-red-500');
+            } else {
+                messageIcon.classList.add('fas', 'fa-info-circle', 'text-blue-500');
+            }
+        };
+
+        /**
+         * Hides the custom message box.
+         */
+        const hideMessageBox = () => {
+            messageBox.classList.remove('opacity-100');
+            messageBox.classList.add('opacity-0');
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 300);
+        };
+
+        /**
+         * Updates the navigation bar based on the logged-in state.
+         * @param {string} [userName='User'] - The name of the logged-in user.
+         */
+        const updateNavBarForLoginState = (userName = 'User') => {
+            const loginLink = document.getElementById('login-link');
+            const registerLink = document.getElementById('register-link');
+            const welcomeMessage = document.getElementById('welcome-message');
+
+            // Change Login to Account (with user name) and link to account.html
+            loginLink.textContent = `Account (${userName})`;
+            loginLink.href = 'account.html';
+            loginLink.onclick = null; // Ensure no lingering onclick
+
+            // Change Register to Logout
+            registerLink.textContent = 'Logout';
+            registerLink.href = '#'; // Prevent default navigation for immediate JS handling
+            registerLink.onclick = () => {
+                showMessageBox('Logging out...', 'info');
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userName');
+                localStorage.removeItem('userEmail'); // Also clear mock email
+                setTimeout(() => {
+                    window.location.href = 'index.html'; // Redirect to public home
+                }, 500);
+                return false; // Prevent default link behavior
+            };
+
+            // Update welcome message on dashboard
+            if (welcomeMessage) {
+                welcomeMessage.textContent = `Welcome back, ${userName}! Select a subject to begin your MCQ practice.`;
+            }
+        };
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get quiz buttons
+            const startQuizButtons = document.querySelectorAll('.start-quiz-btn');
+            closeMessageBoxBtn.addEventListener('click', hideMessageBox);
+
+            // Event listeners for "Start Quiz" buttons on dashboard
+            startQuizButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const topic = button.getAttribute('data-topic');
+                    showMessageBox(`Starting ${topic.replace('-dashboard', '').charAt(0).toUpperCase() + topic.replace('-dashboard', '').slice(1)} Quiz! (Actual quiz logic here)`, 'info');
+                });
+            });
+
+            // Check login state on page load
+            const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
+            const storedUserName = localStorage.getItem('userName');
+
+            if (storedIsLoggedIn !== 'true' || !storedUserName) {
+                // If not logged in, redirect to login page (or public home which will redirect to login)
+                showMessageBox('You must be logged in to view the dashboard.', 'error');
+                setTimeout(() => {
+                    window.location.href = './login.html'; // FIX: Added './' for explicit relative path
+                }, 1500);
+            } else {
+                updateNavBarForLoginState(storedUserName); // Update nav bar for logged-in state
+            }
+
+            // Mobile menu toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
