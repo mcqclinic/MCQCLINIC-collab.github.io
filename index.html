@@ -50,7 +50,7 @@
         /* Responsive adjustments for navigation */
         @media (max-width: 768px) {
             .nav-menu {
-                display: none;
+                display: none; /* This hides the menu by default on mobile */
                 flex-direction: column;
                 width: 100%;
                 background-color: rgba(17, 24, 39, 0.9); /* gray-900/90 */
@@ -61,7 +61,7 @@
                 border-radius: 0 0 0.5rem 0.5rem;
             }
             .nav-menu.active {
-                display: flex;
+                display: flex; /* This shows the menu when the hamburger is clicked */
             }
             .nav-menu li {
                 width: 100%;
@@ -75,7 +75,7 @@
                 display: block; /* Show hamburger icon */
             }
             .desktop-nav {
-                display: none;
+                display: none; /* Hide desktop nav items on mobile */
             }
         }
         @media (min-width: 769px) {
@@ -106,7 +106,8 @@
             <button class="menu-toggle text-white text-3xl md:hidden focus:outline-none">
                 <i class="fas fa-bars"></i>
             </button>
-            <ul class="nav-menu desktop-nav flex space-x-8">
+            <!-- Changed ul class: removed 'flex' from default, added 'md:flex md:space-x-8' -->
+            <ul class="nav-menu desktop-nav md:flex md:space-x-8">
                 <li><a href="#home" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Home<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
                 <li><a href="#about" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">About<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
                 <li><a href="#quiz" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Quiz<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
