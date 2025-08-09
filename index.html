@@ -5,90 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCQ CLINIC | Learn Smarter</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Added for dropdown fix */
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-        }
-        .dropdown {
-            position: relative;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background: white;
-            color: black;
-            top: 100%;
-            left: 0;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            min-width: 150px;
-            border-radius: 5px;
-            z-index: 1000;
-        }
-        .dropdown-content a {
-            display: block;
-            padding: 10px;
-            text-decoration: none;
-            color: black;
-        }
-        .dropdown-content a:hover {
-            background: #f1f1f1;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        /* Hero section background fix */
-        .hero {
-            background: url('https://upload.wikimedia.org/wikipedia/commons/1/15/Examination_in_progress.jpg') center/cover no-repeat;
-            color: white;
-            text-align: center;
-            padding: 100px 20px;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-        }
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 20px auto;
-        }
-        .hero .cta {
-            background: gold;
-            padding: 10px 20px;
-            color: black;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        .hero .cta:hover {
-            background: orange;
-        }
-    </style>
 </head>
 <body>
-  <!-- HEADER -->
-<header style="background:#007bff; color:white; padding:10px 20px; display:flex; align-items:center; justify-content:space-between; font-family:Arial, sans-serif;">
-    <!-- Logo -->
-    <div class="logo" style="font-size:1.5rem; font-weight:bold;">MCQ CLINIC</div>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">MCQ CLINIC</div>
+        <nav>
+            <li><a href="index.html">Home</a></li>
+
+            <a href="#">Medical</a>
+            <a href="#">Nursing</a>
+            <a href="#">High School</a>
+            <a href="#">Grad School</a>
+            <a href="#">Accounting</a>
+            <a href="#">Finance</a>
+            <a href="#">Legal</a>
+            <a href="#">Pharmacy</a>
+        </nav>
+        <div class="header-buttons">
+            <a href="#">Pricing</a>
+            <a href="#">Help</a>
+            <a href="#">Login</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>We Turn Complex Learning Into Simple Success</h1>
+        <p>MCQ CLINIC empowers students and professionals to master tough concepts with confidence.</p>
+        <a class="cta" href="#">Explore MCQ CLINIC Courses</a>
+    </section>
+
+<!-- CATEGORY SECTION -->
+<section class="categories">
+    <div class="category">
+        <h2>Biology</h2>
+        <p>Master every chapter of MDCAT Biology with targeted MCQs, detailed explanations, and topic-wise practice tests.</p>
+        <a href="#">Start Biology</a>
+    </div>
+    <div class="category">
+        <h2>Chemistry</h2>
+        <p>Strengthen your MDCAT Chemistry concepts with high-yield questions and step-by-step solutions.</p>
+        <a href="#">Start Chemistry</a>
+    </div>
+    <div class="category">
+        <h2>Physics</h2>
+        <p>Sharpen your problem-solving skills for MDCAT Physics through conceptual and numerical practice questions.</p>
+        <a href="#">Start Physics</a>
+    </div>
+    <div class="category">
+        <h2>English</h2>
+        <p>Enhance your grammar, vocabulary, and comprehension to score higher in MDCAT English.</p>
+        <a href="#">Start English</a>
+    </div>
+</section>
     
-    <!-- Navigation -->
-    <nav>
-        <a href="index.html">Home</a>
-        
-        <!-- Courses Dropdown -->
-        <div class="dropdown">
-            <a href="#">Courses ▼</a>
-            <div class="dropdown-content">
-                <a href="#">Biology</a>
-                <a href="#">Chemistry</a>
-                <a href="#">Physics</a>
-                <a href="#">English</a>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <h2>What Our Learners Say</h2>
+        <blockquote>
+            “MCQ CLINIC helped me pass my exam on the first try. The explanations were a game-changer!” — Sarah K., Nursing Student
+        </blockquote>
+        <blockquote>
+            “The practice questions were so close to the real exam that I felt completely prepared.” — James L., Medical Graduate
+        </blockquote>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2025 MCQ CLINIC. All rights reserved.</p>
+    </footer>
+</body>
+</html>
