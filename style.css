@@ -1,100 +1,64 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #f5f9fc;
-    color: #333;
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f7f4;
+    color: #1f2937;
 }
-
-header {
-    background: #004b87;
-    color: white;
-    padding: 1rem 2rem;
+.quiz-option.correct {
+    background-color: #dcfce7 !important;
+    border-color: #22c55e !important;
+}
+.quiz-option.incorrect {
+    background-color: #fee2e2 !important;
+    border-color: #ef4444 !important;
+}
+.view {
+    display: none;
+}
+.view.active {
+    display: block;
+}
+.chart-container {
+    position: relative;
+    margin: auto;
+    height: 300px;
+    max-height: 300px;
+    width: 100%;
+    max-width: 400px;
+}
+@media (min-width: 768px) {
+    .chart-container {
+        height: 350px;
+        max-height: 350px;
+    }
+}
+/* Custom modal styles */
+.custom-modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-}
-
-header .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-nav a, .header-buttons a {
-    color: white;
-    text-decoration: none;
-    margin: 0 0.5rem;
-}
-
-.hero {
-    text-align: center;
-    padding: 5rem 2rem;
-    background: #0073e6;
-    color: white;
-}
-
-.hero h1 {
-    font-size: 2.5rem;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-}
-
-.hero .cta {
-    background: white;
-    color: #0073e6;
-    padding: 0.8rem 1.5rem;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 4px;
-}
-
-.categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-    padding: 2rem;
-}
-
-.category {
-    background: white;
-    border: 1px solid #ddd;
-    padding: 1.5rem;
-    text-align: center;
-    border-radius: 6px;
-}
-
-.category h2 {
-    color: #004b87;
-}
-
-.category a {
-    display: inline-block;
-    margin-top: 1rem;
-    background: #004b87;
-    color: white;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    border-radius: 4px;
-}
-
-.testimonials {
-    background: #e9f2fb;
-    padding: 2rem;
-    text-align: center;
-}
-
-.testimonials blockquote {
-    font-style: italic;
-    margin: 1rem auto;
-    max-width: 600px;
-}
-
-footer {
-    background: #002a4d;
-    color: white;
-    text-align: center;
+    justify-content: center;
     padding: 1rem;
+    z-index: 1000;
+}
+.custom-modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Tailwind custom classes for quiz cards */
+.quiz-mode-card {
+    @apply bg-white p-6 rounded-xl shadow-sm text-center cursor-pointer transition-transform transform hover:scale-105 hover:shadow-lg border-2 border-transparent hover:border-teal-500;
+}
+.quiz-mode-card h3 {
+    @apply text-teal-700;
+}
+.quiz-mode-card p {
+    @apply text-gray-600 text-sm mt-2;
 }
