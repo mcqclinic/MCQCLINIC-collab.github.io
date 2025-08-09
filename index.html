@@ -10,7 +10,6 @@
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
         }
-
         /* HEADER */
         header {
             background: #007bff;
@@ -36,54 +35,66 @@
         nav a:hover {
             text-decoration: underline;
         }
-        .header-buttons {
-            display: flex;
-            gap: 15px;
+        /* DROPDOWN MENU */
+        .dropdown {
+            position: relative;
         }
-        .header-buttons a.register {
-            background: gold;
-            padding: 5px 10px;
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 150px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             border-radius: 5px;
+            z-index: 999;
+        }
+        .dropdown-content a {
             color: black;
+            padding: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        .dropdown-content a:hover {
+            background: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        /* HERO SECTION */
+        .hero {
+            background: url('https://upload.wikimedia.org/wikipedia/commons/1/15/Examination_in_progress.jpg') center/cover no-repeat;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+            text-align: center;
+            padding: 0 10px;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+        .hero a {
+            background: gold;
+            color: black;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
             font-weight: bold;
         }
-
-      <!-- HERO SECTION -->
-<section class="hero" style="
-    background: url('https://upload.wikimedia.org/wikipedia/commons/1/15/Examination_in_progress.jpg') center/cover no-repeat;
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-    text-align: center;
-    padding: 0 10px;
-">
-    <h1 style="font-size: 3rem; margin-bottom: 1rem;">We Turn Complex Learning Into Simple Success</h1>
-    <p style="font-size: 1.2rem; max-width: 700px; margin-bottom: 2rem;">
-        MCQ CLINIC empowers students and professionals to master tough concepts with confidence.
-    </p>
-    <a href="#" style="
-        background: gold;
-        color: black;
-        padding: 10px 20px;
-        font-size: 1.2rem;
-        text-decoration: none;
-        border-radius: 5px;
-        font-weight: bold;
-    ">Explore MCQ CLINIC Courses</a>
-</section>
-
-
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 15px;
-            background: #007bff;
-            color: white;
-            margin-top: 20px;
+        .hero a:hover {
+            background: orange;
         }
     </style>
 </head>
@@ -94,30 +105,31 @@
     <div class="logo">MCQ CLINIC</div>
     <nav>
         <a href="index.html">Home</a>
-        <a href="#">Courses ▼</a>
-        <a href="practice-tests.html">Practice Tests</a>
+        <div class="dropdown">
+            <a href="#">Courses ▼</a>
+            <div class="dropdown-content">
+                <a href="#">Biology</a>
+                <a href="#">Chemistry</a>
+                <a href="#">Physics</a>
+                <a href="#">English</a>
+            </div>
+        </div>
+        <a href="https://your-github-page-url" target="_blank">Practice Tests</a>
         <a href="#">Resources</a>
         <a href="#">Blog</a>
         <a href="#">Contact</a>
         <a href="#">Pricing</a>
-    </nav>
-    <div class="header-buttons">
         <a href="#">Login</a>
-        <a href="#" class="register">Register</a>
-    </div>
+        <a href="#">Register</a>
+    </nav>
 </header>
 
 <!-- HERO SECTION -->
 <section class="hero">
-    <h1>We Turn Complex Learning Into Simple Success</h1>
-    <p>MCQ CLINIC empowers students and professionals to master tough concepts with confidence.</p>
-    <a class="cta" href="#">Explore MCQ CLINIC Courses</a>
+    <h1>Welcome to MCQ CLINIC</h1>
+    <p>Your ultimate platform for MDCAT preparation — practice MCQs, take mock exams, and boost your scores with confidence.</p>
+    <a href="#">Start Preparing Now</a>
 </section>
-
-<!-- FOOTER -->
-<footer>
-    <p>© 2025 MCQ CLINIC. All rights reserved.</p>
-</footer>
 
 </body>
 </html>
