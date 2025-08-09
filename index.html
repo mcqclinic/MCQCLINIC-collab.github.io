@@ -111,24 +111,24 @@
                 <li><a href="#about" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">About<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
                 <li><a href="#quiz" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Quiz<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
                 <li><a href="#contact" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Contact<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
-                <!-- Login and Register Links point to separate HTML files -->
+                <!-- Login and Register Links point to actual HTML files -->
                 <li><a href="login.html" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Login<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
                 <li><a href="register.html" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Register<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
             </ul>
         </nav>
 
         <!-- Header Content -->
-        <div class="relative z-20 text-center p-8 bg-gray-900/60 rounded-xl shadow-2xl max-w-4xl mx-auto backdrop-blur-sm animate-fade-in-up">
+        <div id="home-content" class="relative z-20 text-center p-8 bg-gray-900/60 rounded-xl shadow-2xl max-w-4xl mx-auto backdrop-blur-sm animate-fade-in-up">
             <h1 class="text-6xl font-extrabold mb-4 leading-tight drop-shadow-lg">Master Your MDCAT <span class="text-blue-300">with MCQ Clinic</span></h1>
             <p class="text-xl mb-8 opacity-90">Your cutting-edge platform for high-quality multiple-choice questions and performance analytics.</p>
-            <a href="#quiz" class="inline-block bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold py-4 px-10 text-xl rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transform transition-all duration-300 ease-in-out cursor-pointer group" id="start-quiz-hero">
+            <a href="login.html" class="inline-block bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold py-4 px-10 text-xl rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transform transition-all duration-300 ease-in-out cursor-pointer group" id="start-quiz-hero">
                 Start Your Quiz Journey
                 <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"></i>
             </a>
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <!-- About Us Section -->
         <section id="about" class="py-20 px-8 text-center bg-gray-50">
             <h2 class="text-5xl font-bold mb-12 text-blue-700">About <span class="text-emerald-500">MCQ Clinic</span></h2>
@@ -180,7 +180,7 @@
                 <!-- Quiz Topic Card: Physics -->
                 <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col">
                     <h3 class="text-3xl font-semibold mb-4 text-blue-700">Physics</h3>
-                    <p class="text-600 leading-relaxed mb-6 flex-grow">Conquer concepts from Mechanics, Waves, Electromagnetism, to Modern Physics with our specialized question sets.</p>
+                    <p class="text-gray-600 leading-relaxed mb-6 flex-grow">Conquer concepts from Mechanics, Waves, Electromagnetism, to Modern Physics with our specialized question sets.</p>
                     <button class="start-quiz-btn bg-gradient-to-r from-emerald-500 to-emerald-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out self-center group" data-topic="physics">
                         Start Physics Quiz
                         <i class="fas fa-play-circle ml-2 group-hover:rotate-6 transition-transform duration-300"></i>
@@ -232,52 +232,57 @@
     </div>
 
     <script>
+        // Message Box elements - declared globally for accessibility from inline onclick
+        const messageBox = document.getElementById('custom-message-box');
+        const messageIcon = document.getElementById('message-icon');
+        const messageText = document.getElementById('message-text');
+        const closeMessageBoxBtn = document.getElementById('close-message-box');
+
+        /**
+         * Displays a custom message box with a specified message and type.
+         * @param {string} message - The message to display.
+         * @param {'info'|'success'|'error'} type - The type of message (influences icon and color).
+         */
+        const showMessageBox = (message, type = 'info') => {
+            messageText.innerHTML = message; // Use innerHTML to allow for HTML entities
+            messageBox.classList.remove('hidden', 'opacity-0');
+            messageBox.classList.add('flex', 'opacity-100');
+
+            // Set icon and color based on message type
+            messageIcon.className = 'text-6xl mb-4'; // Reset classes
+            if (type === 'success') {
+                messageIcon.classList.add('fas', 'fa-check-circle', 'text-emerald-500');
+            } else if (type === 'error') {
+                messageIcon.classList.add('fas', 'fa-times-circle', 'text-red-500');
+            } else {
+                messageIcon.classList.add('fas', 'fa-info-circle', 'text-blue-500');
+            }
+        };
+
+        /**
+         * Hides the custom message box.
+         */
+        const hideMessageBox = () => {
+            messageBox.classList.remove('opacity-100');
+            messageBox.classList.add('opacity-0');
+            // Wait for the transition to complete before adding 'hidden'
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 300);
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
             // Get quiz buttons
             const startQuizButtons = document.querySelectorAll('.start-quiz-btn');
-            const startQuizHeroButton = document.getElementById('start-quiz-hero');
+
             // Get contact form element
             const contactForm = document.getElementById('contact-form');
-
-            // Message Box elements
-            const messageBox = document.getElementById('custom-message-box');
-            const messageIcon = document.getElementById('message-icon');
-            const messageText = document.getElementById('message-text');
-            const closeMessageBoxBtn = document.getElementById('close-message-box');
 
             // Mobile menu toggle
             const menuToggle = document.querySelector('.menu-toggle');
             const navMenu = document.querySelector('.nav-menu');
+            const navLinks = document.querySelectorAll('.nav-menu a'); // Get all navigation links
 
-            // Function to display custom message box
-            const showMessageBox = (message, type = 'info') => {
-                messageText.textContent = message;
-                messageBox.classList.remove('hidden', 'opacity-0');
-                messageBox.classList.add('flex', 'opacity-100');
-
-                // Set icon and color based on message type
-                messageIcon.className = 'text-6xl mb-4'; // Reset classes
-                if (type === 'success') {
-                    messageIcon.classList.add('fas', 'fa-check-circle', 'text-emerald-500');
-                } else if (type === 'error') {
-                    messageIcon.classList.add('fas', 'fa-times-circle', 'text-red-500');
-                } else {
-                    messageIcon.classList.add('fas', 'fa-info-circle', 'text-blue-500');
-                }
-            };
-
-            // Function to hide custom message box
-            const hideMessageBox = () => {
-                messageBox.classList.remove('opacity-100');
-                messageBox.classList.add('opacity-0');
-                setTimeout(() => {
-                    messageBox.classList.add('hidden');
-                }, 300); // Wait for transition to complete
-            };
-
-            // Event listener for "Start Your Quiz Journey" button in header
-            // This button now functions as a standard anchor link
-            // No specific JS needed beyond its href="#quiz"
 
             // Event listeners for "Start Quiz" buttons in Quiz Section
             startQuizButtons.forEach(button => {
@@ -293,15 +298,16 @@
             // Contact Form Submission
             if (contactForm) {
                 contactForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    // In a real application, you would send this data to a server.
+                    e.preventDefault(); // Prevent default form submission behavior
+
+                    // In a real application, this data would be sent to a server.
                     const name = contactForm.name.value;
                     const email = contactForm.email.value;
                     const message = contactForm.message.value;
 
                     console.log('Contact form submission:', { name, email, message });
                     showMessageBox('Thank you for your message! We will get back to you soon. (This is a demo)', 'success');
-                    contactForm.reset(); // Clear the form
+                    contactForm.reset(); // Clear the form after submission
                 });
             }
 
@@ -311,6 +317,21 @@
                     navMenu.classList.toggle('active');
                 });
             }
+
+            // Close mobile menu when a navigation link is clicked
+            navLinks.forEach(link => {
+                // Ensure that links which navigate to external HTML files don't close the menu prematurely
+                // The 'login.html' and 'register.html' links will trigger a full page load,
+                // so no need to explicitly close the menu for them via JS.
+                // Only close for internal anchor links.
+                if (link.hash && link.getAttribute('href').startsWith('#')) {
+                    link.addEventListener('click', () => {
+                        if (navMenu.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                        }
+                    });
+                }
+            });
         });
     </script>
 </body>
