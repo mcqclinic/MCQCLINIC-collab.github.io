@@ -5,6 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCQ CLINIC | Learn Smarter</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Added for dropdown fix */
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            color: black;
+            top: 100%;
+            left: 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            min-width: 150px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+        }
+        .dropdown-content a:hover {
+            background: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Hero section background fix */
+        .hero {
+            background: url('https://upload.wikimedia.org/wikipedia/commons/1/15/Examination_in_progress.jpg') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+        }
+        .hero .cta {
+            background: gold;
+            padding: 10px 20px;
+            color: black;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .hero .cta:hover {
+            background: orange;
+        }
+    </style>
 </head>
 <body>
   <!-- HEADER -->
@@ -13,95 +81,14 @@
     <div class="logo" style="font-size:1.5rem; font-weight:bold;">MCQ CLINIC</div>
     
     <!-- Navigation -->
-    <nav style="display:flex; align-items:center; gap:20px;">
-        <a href="index.html" style="color:white; text-decoration:none;">Home</a>
+    <nav>
+        <a href="index.html">Home</a>
         
         <!-- Courses Dropdown -->
-        <div style="position:relative;">
-            <a href="#" style="color:white; text-decoration:none;">Courses ▼</a>
-            <div style="display:none; position:absolute; background:white; color:black; top:100%; left:0; box-shadow:0 4px 8px rgba(0,0,0,0.1); min-width:150px; border-radius:5px;">
-                <a href="#" style="display:block; padding:10px; text-decoration:none; color:black;">Biology</a>
-                <a href="#" style="display:block; padding:10px; text-decoration:none; color:black;">Chemistry</a>
-                <a href="#" style="display:block; padding:10px; text-decoration:none; color:black;">Physics</a>
-                <a href="#" style="display:block; padding:10px; text-decoration:none; color:black;">English</a>
-            </div>
-        </div>
-
-        <a href="#" style="color:white; text-decoration:none;">Practice Tests</a>
-        <a href="#" style="color:white; text-decoration:none;">Resources</a>
-        <a href="#" style="color:white; text-decoration:none;">Blog</a>
-        <a href="#" style="color:white; text-decoration:none;">Contact</a>
-        <a href="#" style="color:white; text-decoration:none;">Pricing</a>
-    </nav>
-    
-    <!-- Login/Register -->
-    <div class="header-buttons" style="display:flex; gap:15px;">
-        <a href="#" style="color:white; text-decoration:none;">Login</a>
-        <a href="#" style="color:white; background:gold; padding:5px 10px; border-radius:5px; text-decoration:none; color:black; font-weight:bold;">Register</a>
-    </div>
-</header>
-
-<!-- Dropdown Hover Effect -->
-<script>
-    const dropdown = document.querySelector('header nav div');
-    dropdown.addEventListener('mouseover', () => {
-        dropdown.querySelector('div').style.display = 'block';
-    });
-    dropdown.addEventListener('mouseout', () => {
-        dropdown.querySelector('div').style.display = 'none';
-    });
-</script>
-
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <h1>We Turn Complex Learning Into Simple Success</h1>
-        <p>MCQ CLINIC empowers students and professionals to master tough concepts with confidence.</p>
-        <a class="cta" href="#">Explore MCQ CLINIC Courses</a>
-    </section>
-
-<!-- CATEGORY SECTION -->
-<section class="categories">
-    <div class="category">
-        <h2>Biology</h2>
-        <p>Master every chapter of MDCAT Biology with targeted MCQs, detailed explanations, and topic-wise practice tests.</p>
-        <a href="#">Start Biology</a>
-    </div>
-    <div class="category">
-        <h2>Chemistry</h2>
-        <p>Strengthen your MDCAT Chemistry concepts with high-yield questions and step-by-step solutions.</p>
-        <a href="#">Start Chemistry</a>
-    </div>
-    <div class="category">
-        <h2>Physics</h2>
-        <p>Sharpen your problem-solving skills for MDCAT Physics through conceptual and numerical practice questions.</p>
-        <a href="#">Start Physics</a>
-    </div>
-    <div class="category">
-        <h2>English</h2>
-        <p>Enhance your grammar, vocabulary, and comprehension to score higher in MDCAT English.</p>
-        <a href="#">Start English</a>
-    </div>
-</section>
-    
-
-  <!-- TESTIMONIALS -->
-<section class="testimonials">
-    <h2>What MDCAT Students Say</h2>
-    <blockquote>
-        “MCQ CLINIC made my MDCAT preparation so much easier. The biology MCQs were spot-on and helped me score 182/200!” — Ayesha R., MDCAT Student
-    </blockquote>
-    <blockquote>
-        “The physics questions were just like the real MDCAT. I felt confident walking into the exam and scored above 90%.” — Ali M., MDCAT Candidate
-    </blockquote>
-    <blockquote>
-        “Thanks to MCQ CLINIC, I improved my chemistry score by 30 points in just one month of practice.” — Fatima S., MDCAT Aspirant
-    </blockquote>
-</section>
-
-
-    <!-- FOOTER -->
-    <footer>
-        <p>© 2025 MCQ CLINIC. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+        <div class="dropdown">
+            <a href="#">Courses ▼</a>
+            <div class="dropdown-content">
+                <a href="#">Biology</a>
+                <a href="#">Chemistry</a>
+                <a href="#">Physics</a>
+                <a href="#">English</a>
