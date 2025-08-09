@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCQ CLINIC - MDCAT Preparation</title>
+    <title>MCQ CLINIC | Learn Smarter</title>
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
         }
+
+        /* HEADER */
         header {
             background: #007bff;
             color: white;
@@ -22,14 +24,31 @@
             font-size: 1.5rem;
             font-weight: bold;
         }
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
         nav a {
             color: white;
-            margin: 0 10px;
             text-decoration: none;
         }
         nav a:hover {
             text-decoration: underline;
         }
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        .header-buttons a.register {
+            background: gold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: black;
+            font-weight: bold;
+        }
+
+        /* HERO */
         .hero {
             background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Examination_in_progress.jpg/1200px-Examination_in_progress.jpg') center/cover no-repeat;
             height: 80vh;
@@ -51,7 +70,7 @@
             max-width: 700px;
             margin-bottom: 2rem;
         }
-        .hero a {
+        .hero a.cta {
             background: gold;
             color: black;
             padding: 10px 20px;
@@ -60,8 +79,17 @@
             border-radius: 5px;
             font-weight: bold;
         }
-        .hero a:hover {
+        .hero a.cta:hover {
             background: orange;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #007bff;
+            color: white;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -72,23 +100,30 @@
     <div class="logo">MCQ CLINIC</div>
     <nav>
         <a href="index.html">Home</a>
-        <a href="#">Courses</a>
-      <a href="practice-tests.html">Practice Tests</a>
+        <a href="#">Courses ▼</a>
+        <a href="practice-tests.html">Practice Tests</a>
         <a href="#">Resources</a>
         <a href="#">Blog</a>
         <a href="#">Contact</a>
         <a href="#">Pricing</a>
-        <a href="#">Login</a>
-        <a href="#">Register</a>
     </nav>
+    <div class="header-buttons">
+        <a href="#">Login</a>
+        <a href="#" class="register">Register</a>
+    </div>
 </header>
 
 <!-- HERO SECTION -->
 <section class="hero">
-    <h1>Welcome to MCQ CLINIC</h1>
-    <p>Your ultimate platform for MDCAT preparation — practice MCQs, take mock exams, and boost your scores with confidence.</p>
-    <a href="#">Start Preparing Now</a>
+    <h1>We Turn Complex Learning Into Simple Success</h1>
+    <p>MCQ CLINIC empowers students and professionals to master tough concepts with confidence.</p>
+    <a class="cta" href="#">Explore MCQ CLINIC Courses</a>
 </section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2025 MCQ CLINIC. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
