@@ -320,17 +320,14 @@
 
             // Close mobile menu when a navigation link is clicked
             navLinks.forEach(link => {
-                // Ensure that links which navigate to external HTML files don't close the menu prematurely
-                // The 'login.html' and 'register.html' links will trigger a full page load,
-                // so no need to explicitly close the menu for them via JS.
-                // Only close for internal anchor links.
-                if (link.hash && link.getAttribute('href').startsWith('#')) {
-                    link.addEventListener('click', () => {
-                        if (navMenu.classList.contains('active')) {
-                            navMenu.classList.remove('active');
-                        }
-                    });
-                }
+                // Remove the 'active' class from the navigation menu when any link is clicked.
+                // This ensures the menu hides after an item is selected, whether it's
+                // an internal anchor or an external page link.
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                    }
+                });
             });
         });
     </script>
