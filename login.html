@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MCQ Clinic</title>
+    <!-- Google Fonts - Inter for clean typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons (e.g., user, lock) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Tailwind CSS CDN (included as per instructions, though custom CSS is primarily used here) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Base styles for the body, setting up a centered background layout */
+        body {
+            font-family: 'Inter', sans-serif; /* Use Inter font as specified */
+            background-color: #1a2a4b; /* Solid dark blue background to match the website */
+            display: flex; /* Enable flexbox for centering content */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full viewport height */
+            margin: 0; /* Remove default body margin */
+            overflow: hidden; /* Prevent scrollbars if content is larger than viewport */
+        }
+
+        /* Container for the entire form, giving it a card-like appearance */
+        .container {
+            background: white; /* White background for the form container */
+            padding: 2rem; /* Ample padding inside the container */
+            border-radius: 15px; /* Slightly rounded corners for the container */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+            text-align: center; /* Center align text content within the container */
+            width: 350px; /* Fixed width for the form */
+            max-width: 90%; /* Ensure responsiveness on smaller screens */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+
+        /* Styling for the image at the top of the form */
+        .container img {
+            width: 80px; /* Fixed width for the image */
+            margin-bottom: 1rem; /* Space below the image */
+            border-radius: 50%; /* Make the image circular (e.g., for an avatar) */
+            object-fit: cover; /* Ensure image covers the area without distortion */
+        }
+
+        /* Styling for the main heading of the form */
+        h2 {
+            margin-bottom: 1.5rem; /* Space below the heading */
+            color: #1e3a8a; /* Deep blue color for the heading */
+            font-weight: 700; /* Bold font weight for emphasis */
+        }
+
+        /* Grouping for input fields and their icons */
+        .input-group {
+            position: relative; /* Needed to position the icon relative to the input */
+            margin-bottom: 1rem; /* Space between input groups */
+        }
+
+        /* Styling for the input fields */
+        .input-group input {
+            width: 100%; /* Full width within its parent */
+            padding: 0.75rem 2.5rem 0.75rem 2.5rem; /* Padding to make space for the icon on the left */
+            border: 1px solid #ccc; /* Light grey border */
+            border-radius: 50px; /* Very rounded corners for pill-shaped inputs */
+            outline: none; /* Remove outline on focus */
+            font-size: 1rem; /* Readable font size */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+            transition: border-color 0.3s ease; /* Smooth transition for border on focus */
+        }
+
+        .input-group input:focus {
+            border-color: #2563eb; /* Blue border on focus */
+        }
+
+        /* Styling for the icons inside the input groups */
+        .input-group i {
+            position: absolute; /* Absolute positioning within the input group */
+            left: 15px; /* Position from the left */
+            top: 50%; /* Vertically center */
+            transform: translateY(-50%); /* Adjust for perfect vertical centering */
+            color: #888; /* Dark grey color for icons */
+            font-size: 1.1rem; /* Slightly larger icon size */
+        }
+
+        /* Container for options like "Remember me" and "Forgot password" */
+        .options {
+            display: flex; /* Use flexbox for horizontal alignment */
+            justify-content: space-between; /* Distribute items with space between them */
+            font-size: 0.9rem; /* Smaller font size for options */
+            margin-bottom: 1.5rem; /* Space below options */
+            color: #555; /* Default text color for options */
+        }
+
+        /* Styling for links within the options group */
+        .options a {
+            text-decoration: none; /* Remove underline from links */
+            color: #2563eb; /* Blue color for links */
+            transition: color 0.3s ease; /* Smooth transition for color on hover */
+        }
+
+        .options a:hover {
+            color: #1d4ed8; /* Darker blue on hover */
+        }
+
+        /* Styling for the main submit button */
+        button {
+            background: #2563eb; /* Blue background for the button */
+            color: white; /* White text color */
+            border: none; /* No border */
+            padding: 0.75rem; /* Padding inside the button */
+            width: 100%; /* Full width within its parent */
+            border-radius: 50px; /* Very rounded corners for a pill-shaped button */
+            font-size: 1rem; /* Readable font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background 0.3s ease; /* Smooth transition for background on hover */
+            font-weight: 600; /* Semi-bold font weight */
+        }
+
+        /* Hover effect for the button */
+        button:hover {
+            background: #1d4ed8; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- User icon for the login form -->
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="User Icon">
+        <h2>Login</h2>
+        <form action="#">
+            <div class="input-group">
+                <i class="fa fa-user"></i>
+                <input type="text" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <i class="fa fa-lock"></i>
+                <input type="password" placeholder="Password" required>
+            </div>
+            <div class="options">
+                <label><input type="checkbox"> Remember me</label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <button type="submit">LOGIN</button>
+        </form>
+    </div>
+</body>
+</html>
