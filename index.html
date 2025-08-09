@@ -7,26 +7,50 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- HEADER -->
-    <header>
-        <div class="logo">MCQ CLINIC</div>
-        <nav>
-            <li><a href="index.html">Home</a></li>
-            <a href="#">Medical</a>
-            <a href="#">Nursing</a>
-            <a href="#">High School</a>
-            <a href="#">Grad School</a>
-            <a href="#">Accounting</a>
-            <a href="#">Finance</a>
-            <a href="#">Legal</a>
-            <a href="#">Pharmacy</a>
-        </nav>
-        <div class="header-buttons">
-            <a href="#">Pricing</a>
-            <a href="#">Help</a>
-            <a href="#">Login</a>
+  <!-- HEADER -->
+<header style="background:#007bff; color:white; padding:10px 20px; display:flex; align-items:center; justify-content:space-between; font-family:Arial, sans-serif;">
+    <!-- Logo -->
+    <div class="logo" style="font-size:1.5rem; font-weight:bold;">MCQ CLINIC</div>
+    
+    <!-- Navigation -->
+    <nav style="display:flex; align-items:center; gap:20px;">
+        <a href="index.html" style="color:white; text-decoration:none;">Home</a>
+        
+        <!-- Courses Dropdown -->
+        <div style="position:relative;">
+            <a href="#" style="color:white; text-decoration:none;">Courses ▼</a>
+            <div style="display:none; position:absolute; background:white; color:black; top:100%; left:0; box-shadow:0 4px 8px rgba(0,0,0,0.1); min-width:150px; border-radius:5px;">
+                <a href="#" style="display:block; padding:10px; text-decoration:none; color:black;">Biology</a>
+                <a href="#" style="display:block; padding:10px; text-decoration:none; color:black;">Chemistry</a>
+                <a href="#" style="display:block; padding:10px; text-decoration:none; color:black;">Physics</a>
+                <a href="#" style="display:block; padding:10px; text-decoration:none; color:black;">English</a>
+            </div>
         </div>
-    </header>
+
+        <a href="#" style="color:white; text-decoration:none;">Practice Tests</a>
+        <a href="#" style="color:white; text-decoration:none;">Resources</a>
+        <a href="#" style="color:white; text-decoration:none;">Blog</a>
+        <a href="#" style="color:white; text-decoration:none;">Contact</a>
+        <a href="#" style="color:white; text-decoration:none;">Pricing</a>
+    </nav>
+    
+    <!-- Login/Register -->
+    <div class="header-buttons" style="display:flex; gap:15px;">
+        <a href="#" style="color:white; text-decoration:none;">Login</a>
+        <a href="#" style="color:white; background:gold; padding:5px 10px; border-radius:5px; text-decoration:none; color:black; font-weight:bold;">Register</a>
+    </div>
+</header>
+
+<!-- Dropdown Hover Effect -->
+<script>
+    const dropdown = document.querySelector('header nav div');
+    dropdown.addEventListener('mouseover', () => {
+        dropdown.querySelector('div').style.display = 'block';
+    });
+    dropdown.addEventListener('mouseout', () => {
+        dropdown.querySelector('div').style.display = 'none';
+    });
+</script>
 
     <!-- HERO SECTION -->
     <section class="hero">
@@ -60,16 +84,20 @@
 </section>
     
 
-    <!-- TESTIMONIALS -->
-    <section class="testimonials">
-        <h2>What Our Learners Say</h2>
-        <blockquote>
-            “MCQ CLINIC helped me pass my exam on the first try. The explanations were a game-changer!” — Sarah K., Nursing Student
-        </blockquote>
-        <blockquote>
-            “The practice questions were so close to the real exam that I felt completely prepared.” — James L., Medical Graduate
-        </blockquote>
-    </section>
+  <!-- TESTIMONIALS -->
+<section class="testimonials">
+    <h2>What MDCAT Students Say</h2>
+    <blockquote>
+        “MCQ CLINIC made my MDCAT preparation so much easier. The biology MCQs were spot-on and helped me score 182/200!” — Ayesha R., MDCAT Student
+    </blockquote>
+    <blockquote>
+        “The physics questions were just like the real MDCAT. I felt confident walking into the exam and scored above 90%.” — Ali M., MDCAT Candidate
+    </blockquote>
+    <blockquote>
+        “Thanks to MCQ CLINIC, I improved my chemistry score by 30 points in just one month of practice.” — Fatima S., MDCAT Aspirant
+    </blockquote>
+</section>
+
 
     <!-- FOOTER -->
     <footer>
