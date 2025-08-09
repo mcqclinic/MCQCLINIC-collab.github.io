@@ -3,101 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCQ Clinic - MDCAT Preparation</title>
-
-    <!-- Tailwind CSS -->
+    <title>MCQ Clinic - MDCAT Prep</title>
+    <!-- Inter Font from Google Fonts for a modern, clean look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN for utility-first styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Custom Styles -->
+    <!-- Custom styles for global elements and message box -->
     <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for modern icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Custom Tailwind Configuration (optional, if you need to extend defaults) */
+        /* You can put any custom CSS variables or base styles here */
+        :root {
+            --color-primary: #3b82f6; /* Tailwind blue-500 */
+            --color-accent: #10b981; /* Tailwind emerald-500 */
+            --color-bg-light: #f9fafb; /* Tailwind gray-50 */
+            --color-text-dark: #1f2937; /* Tailwind gray-900 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-text-dark);
+        }
+
+        /* Basic rounded corners applied globally for modern feel */
+        * {
+            border-radius: 0.5rem; /* Equivalent to Tailwind's rounded-lg or rounded-xl */
+        }
+    </style>
 </head>
-<body class="antialiased">
+<body class="bg-gray-50 text-gray-800 antialiased">
 
-    <div id="app-container" class="container mx-auto p-4 md:p-8 max-w-5xl">
+    <!-- Header Section: Hero background with navigation -->
+    <header class="relative h-screen flex flex-col items-center justify-center text-white overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('https://placehold.co/1920x1080/3b82f6/ffffff?text=MDCAT+Success+-+MCQ+Clinic');"></div>
+        <div class="absolute inset-0 z-10 bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent"></div>
 
-        <header class="text-center mb-8">
-            <h1 class="text-4xl md:text-5xl font-bold text-teal-700">MCQ Clinic</h1>
-            <p class="text-lg text-gray-600 mt-2">Your dedicated partner for MDCAT success.</p>
-        </header>
+        <!-- Navigation Bar -->
+        <nav class="fixed top-0 left-0 w-full bg-gray-900/80 shadow-lg py-4 px-8 z-50 flex justify-between items-center backdrop-blur-sm">
+            <a href="#" class="text-white text-3xl font-bold tracking-wide hover:text-blue-400 transition duration-300">MCQ Clinic</a>
+            <ul class="flex space-x-8">
+                <li><a href="#home" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Home<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
+                <li><a href="#about" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">About<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
+                <li><a href="#quiz" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Quiz<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
+                <li><a href="#contact" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Contact<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
+                <!-- New Login and Register Links -->
+                <li><a href="#login" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Login<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
+                <li><a href="#register" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Register<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
+            </ul>
+        </nav>
 
-        <main>
-            <!-- Home/Dashboard View -->
-            <div id="home-view" class="view active">
-                <section id="intro" class="text-center bg-white p-6 rounded-xl shadow-sm mb-8">
-                    <h2 class="text-2xl font-bold mb-4 text-gray-800">Welcome, Future Doctor!</h2>
-                    <p class="text-gray-600 mb-6">MCQ Clinic is designed to help you master the MDCAT with a variety of practice tests. Sharpen your skills, manage your time effectively, and build the confidence you need to excel. Start by exploring the official subject weightage below, then select a test mode to begin your practice.</p>
-                </section>
-                
-                <section id="mdcat-overview" class="grid md:grid-cols-2 gap-8 items-center mb-12">
-                    <div class="bg-white p-6 rounded-xl shadow-sm">
-                        <h3 class="text-xl font-bold text-center mb-4 text-gray-800">MDCAT 2025 Subject Weightage</h3>
-                        <div class="chart-container">
-                            <canvas id="subject-weightage-chart"></canvas>
-                        </div>
-                    </div>
-                    <div class="text-gray-700 space-y-4">
-                        <div class="bg-white p-4 rounded-lg shadow-sm">
-                            <h4 class="font-bold text-lg">Key Exam Details</h4>
-                            <ul class="list-disc list-inside mt-2 space-y-1">
-                                <li><span class="font-semibold">Total MCQs:</span> 180</li>
-                                <li><span class="font-semibold">Total Time:</span> 3 Hours (180 Minutes)</li>
-                                <li><span class="font-semibold">Marking:</span> +1 for correct, No negative marking</li>
-                                <li><span class="font-semibold">Difficulty:</span> ~15% Easy, 70% Moderate, 15% Difficult</li>
-                            </ul>
-                        </div>
-                         <div class="bg-white p-4 rounded-lg shadow-sm">
-                            <h4 class="font-bold text-lg">Our Mission</h4>
-                            <p class="mt-2">To provide a realistic, accessible, and effective preparation platform that mirrors the actual MDCAT, helping you identify strengths and conquer weaknesses.</p>
-                        </div>
-                    </div>
-                </section>
+        <!-- Header Content -->
+        <div class="relative z-20 text-center p-8 bg-gray-900/60 rounded-xl shadow-2xl max-w-4xl mx-auto backdrop-blur-sm animate-fade-in-up">
+            <h1 class="text-6xl font-extrabold mb-4 leading-tight drop-shadow-lg">Master Your MDCAT <span class="text-blue-300">with MCQ Clinic</span></h1>
+            <p class="text-xl mb-8 opacity-90">Your cutting-edge platform for high-quality multiple-choice questions and performance analytics.</p>
+            <a href="#quiz" class="inline-block bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold py-4 px-10 text-xl rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transform transition-all duration-300 ease-in-out cursor-pointer group">
+                Start Your Quiz Journey
+                <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"></i>
+            </a>
+        </div>
+    </header>
 
-                <section id="quiz-selection">
-                    <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Choose Your Practice Mode</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div class="quiz-mode-card" data-test-type="Daily">
-                            <h3 class="font-bold text-xl">Daily Quiz</h3>
-                            <p>A quick, focused quiz to keep your skills sharp every day.</p>
-                        </div>
-                        <div class="quiz-mode-card" data-test-type="Weekly">
-                            <h3 class="font-bold text-xl">Weekly Test</h3>
-                            <p>A comprehensive test covering the week's topics.</p>
-                        </div>
-                        <div class="quiz-mode-card" data-test-type="Monthly">
-                            <h3 class="font-bold text-xl">Monthly Test</h3>
-                            <p>A larger test to assess your progress over the month.</p>
-                        </div>
-                        <div class="quiz-mode-card" data-test-type="Mock">
-                            <h3 class="font-bold text-xl">Full Mock Test</h3>
-                            <p>Simulate the real MDCAT with a full-length, timed exam.</p>
-                        </div>
-                    </div>
-                </section>
+    <main>
+        <!-- About Us Section -->
+        <section id="about" class="py-20 px-8 text-center bg-gray-50">
+            <h2 class="text-5xl font-bold mb-12 text-blue-700">About <span class="text-emerald-500">MCQ Clinic</span></h2>
+            <p class="text-lg max-w-3xl mx-auto mb-16 leading-relaxed">MCQ Clinic is dedicated to empowering MDCAT students to achieve their academic goals. We offer an extensive library of meticulously crafted MCQs, covering Biology, Chemistry, Physics, and English, designed to optimize your preparation efficiency and effectiveness.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+                <!-- Feature Item 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col items-center">
+                    <i class="fas fa-database text-6xl text-blue-500 mb-6 drop-shadow-md"></i>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Vast Question Bank</h3>
+                    <p class="text-gray-600 leading-relaxed">Access thousands of highly relevant MCQs, meticulously prepared by subject matter experts to align with MDCAT curriculum.</p>
+                </div>
+                <!-- Feature Item 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col items-center">
+                    <i class="fas fa-chart-line text-6xl text-emerald-500 mb-6 drop-shadow-md"></i>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Insightful Analytics</h3>
+                    <p class="text-gray-600 leading-relaxed">Track your performance with detailed analytics, identify strengths and weaknesses, and focus your study efforts effectively.</p>
+                </div>
+                <!-- Feature Item 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col items-center">
+                    <i class="fas fa-stopwatch text-6xl text-purple-500 mb-6 drop-shadow-md"></i>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Simulated Exams</h3>
+                    <p class="text-gray-600 leading-relaxed">Practice under timed, exam-like conditions to improve your speed, accuracy, and confidence for the actual MDCAT.</p>
+                </div>
             </div>
+        </section>
 
-            <!-- Other views (quiz, results, review) remain unchanged -->
-            <!-- ... (keep your full HTML content here, just remove inline CSS & JS) -->
+        <!-- Quiz Section -->
+        <section id="quiz" class="py-20 px-8 text-center bg-gray-100">
+            <h2 class="text-5xl font-bold mb-12 text-emerald-700">Ready to <span class="text-blue-500">Challenge Yourself?</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+                <!-- Quiz Topic Card: Biology -->
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col">
+                    <h3 class="text-3xl font-semibold mb-4 text-blue-700">Biology</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 flex-grow">Dive into intricate concepts of Human Anatomy, Genetics, Botany, and Zoology with our comprehensive Biology MCQs.</p>
+                    <button class="start-quiz-btn bg-gradient-to-r from-emerald-500 to-emerald-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out self-center group" data-topic="biology">
+                        Start Biology Quiz
+                        <i class="fas fa-play-circle ml-2 group-hover:rotate-6 transition-transform duration-300"></i>
+                    </button>
+                </div>
+                <!-- Quiz Topic Card: Chemistry -->
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col">
+                    <h3 class="text-3xl font-semibold mb-4 text-blue-700">Chemistry</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 flex-grow">Master Organic, Inorganic, and Physical Chemistry through challenging MCQs designed to reinforce your understanding.</p>
+                    <button class="start-quiz-btn bg-gradient-to-r from-emerald-500 to-emerald-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out self-center group" data-topic="chemistry">
+                        Start Chemistry Quiz
+                        <i class="fas fa-play-circle ml-2 group-hover:rotate-6 transition-transform duration-300"></i>
+                    </button>
+                </div>
+                <!-- Quiz Topic Card: Physics -->
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col">
+                    <h3 class="text-3xl font-semibold mb-4 text-blue-700">Physics</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 flex-grow">Conquer concepts from Mechanics, Waves, Electromagnetism, to Modern Physics with our specialized question sets.</p>
+                    <button class="start-quiz-btn bg-gradient-to-r from-emerald-500 to-emerald-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out self-center group" data-topic="physics">
+                        Start Physics Quiz
+                        <i class="fas fa-play-circle ml-2 group-hover:rotate-6 transition-transform duration-300"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
 
-        </main>
-    </div>
+        <!-- Contact Us Section -->
+        <section id="contact" class="py-20 px-8 text-center bg-white">
+            <h2 class="text-5xl font-bold mb-12 text-blue-700">Get in <span class="text-emerald-500">Touch</span></h2>
+            <p class="text-lg max-w-3xl mx-auto mb-12 leading-relaxed">Have questions, feedback, or need support? Our team is ready to assist you. Fill out the form below and we'll get back to you promptly.</p>
+            <form id="contact-form" class="max-w-3xl mx-auto p-10 bg-gray-50 rounded-xl shadow-2xl">
+                <div class="mb-6">
+                    <input type="text" name="name" placeholder="Your Name" required class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+                </div>
+                <div class="mb-6">
+                    <input type="email" name="email" placeholder="Your Email" required class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+                </div>
+                <div class="mb-6">
+                    <textarea name="message" placeholder="Your Message" required rows="6" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 resize-y"></textarea>
+                </div>
+                <button type="submit" class="bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold py-4 px-10 text-xl rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out cursor-pointer group">
+                    Send Your Message
+                    <i class="fas fa-paper-plane ml-3 group-hover:translate-x-1 transition-transform duration-300"></i>
+                </button>
+            </form>
+        </section>
+    </main>
 
-    <!-- Custom Modal for Alerts -->
-    <div id="custom-alert-modal" class="custom-modal hidden">
-        <div class="custom-modal-content">
-            <p id="alert-message" class="text-lg mb-6"></p>
-            <button id="alert-ok-btn" class="px-6 py-2 bg-teal-600 text-white font-semibold rounded-lg hover:bg-teal-700 transition shadow-md">OK</button>
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-gray-300 py-10 text-center text-sm">
+        <p>&copy; 2025 MCQ Clinic. All Rights Reserved. Designed with <i class="fas fa-heart text-red-500 animate-pulse"></i> for MDCAT Aspirants.</p>
+        <div class="flex justify-center space-x-6 mt-4">
+            <a href="#" class="hover:text-white transition duration-200"><i class="fab fa-facebook-f text-lg"></i></a>
+            <a href="#" class="hover:text-white transition duration-200"><i class="fab fa-twitter text-lg"></i></a>
+            <a href="#" class="hover:text-white transition duration-200"><i class="fab fa-instagram text-lg"></i></a>
+            <a href="#" class="hover:text-white transition duration-200"><i class="fab fa-linkedin-in text-lg"></i></a>
+        </div>
+    </footer>
+
+    <!-- Custom Message Box Modal -->
+    <div id="custom-message-box" class="fixed inset-0 bg-black bg-opacity-50 z-[1001] flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white p-8 rounded-xl shadow-2xl max-w-md w-full text-center transform scale-95 transition-transform duration-300">
+            <i id="message-icon" class="text-6xl mb-4 text-blue-500"></i>
+            <p id="message-text" class="text-lg mb-6 text-gray-700 font-medium"></p>
+            <button id="close-message-box" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Got It!</button>
         </div>
     </div>
 
-    <!-- Custom Script -->
+    <!-- Main JavaScript file -->
     <script src="script.js"></script>
 </body>
 </html>
