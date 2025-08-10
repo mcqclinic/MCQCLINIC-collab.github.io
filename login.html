@@ -74,19 +74,15 @@
 
     <script type="module">
         // Import necessary Firebase functions
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-        // Firebase configuration (replace with your own Firebase project details)
-        const firebaseConfig = {
-            apiKey: "AIzaSyA2UZX22xqoO0xBpYxafmIAtBsun3PyF4s",
-            authDomain: "mcqclinic-4aa5a.firebaseapp.com",
-            projectId: "mcqclinic-4aa5a",
-            storageBucket: "mcqclinic-4aa5a.firebasestorage.app",
-            messagingSenderId: "1070119074861",
-            appId: "1:1070119074861:web:4fcebb6038d7fed0e20ca4",
-            measurementId: "G-QL4N8Z969X"
-        };
+        // Global Firebase variables provided by the Canvas environment
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        // initialAuthToken is typically for custom token sign-in, not standard email/password login.
+        // It's included here for consistency, but not directly used for email/password login.
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
         let app;
         let auth;
@@ -194,6 +190,7 @@
                 forgotPasswordLink.addEventListener('click', (e) => {
                     e.preventDefault();
                     showMessageBox("Forgot password functionality is coming soon! Please contact support for now.", 'info');
+                    // In a real application, you would navigate to a password reset page.
                 });
             }
 
@@ -202,6 +199,7 @@
                 registerLink.addEventListener('click', (e) => {
                     e.preventDefault();
                     showMessageBox("Registration is coming soon! Please check back later.", 'info');
+                    // In a real application, you would navigate to the registration page.
                 });
             }
 
