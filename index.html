@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCQ Clinic - MDCAT Prep</title>
+    <!-- Inter Font from Google Fonts for a modern, clean look -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN for utility-first styling -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for modern icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
+        /* Custom Tailwind Configuration (optional, if you need to extend defaults) */
         :root {
-            --color-primary: #3b82f6;
-            --color-accent: #10b981;
-            --color-bg-light: #f9fafb;
-            --color-text-dark: #1f2937;
+            --color-primary: #3b82f6; /* Tailwind blue-500 */
+            --color-accent: #10b981; /* Tailwind emerald-500 */
+            --color-bg-light: #f9fafb; /* Tailwind gray-50 */
+            --color-text-dark: #1f2937; /* Tailwind gray-900 */
         }
 
         body {
             font-family: 'Inter', sans-serif;
             color: var(--color-text-dark);
-            scroll-behavior: smooth;
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
         }
 
+        /* Basic rounded corners applied globally for modern feel */
         * {
-            border-radius: 0.5rem;
+            border-radius: 0.5rem; /* Equivalent to Tailwind's rounded-lg or rounded-xl */
         }
 
+        /* Animation for header content */
         @keyframes fade-in-up {
             from {
                 opacity: 0;
                 transform: translateY(20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -43,76 +47,82 @@
             animation: fade-in-up 1s ease-out forwards;
         }
 
+        /* Responsive adjustments for navigation */
         @media (max-width: 768px) {
             .nav-menu {
-                display: none;
+                display: none; /* This hides the menu by default on mobile */
                 flex-direction: column;
                 width: 100%;
-                background-color: rgba(17, 24, 39, 0.9);
+                background-color: rgba(17, 24, 39, 0.9); /* gray-900/90 */
                 position: absolute;
                 top: 100%;
                 left: 0;
                 padding: 1rem 0;
                 border-radius: 0 0 0.5rem 0.5rem;
             }
-
             .nav-menu.active {
-                display: flex;
+                display: flex; /* This shows the menu when the hamburger is clicked */
             }
-
-            .menu-toggle {
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+                padding: 0.75rem 0;
+            }
+            .nav-menu li a {
                 display: block;
             }
-
+            .menu-toggle {
+                display: block; /* Show hamburger icon */
+            }
             .desktop-nav {
-                display: none;
+                display: none; /* Hide desktop nav items on mobile */
             }
         }
-
         @media (min-width: 769px) {
             .nav-menu {
-                display: flex !important;
+                display: flex !important; /* Always show on desktop */
             }
-
             .menu-toggle {
-                display: none;
+                display: none; /* Hide hamburger icon */
             }
-
             .desktop-nav {
                 display: flex;
             }
         }
     </style>
 </head>
-
 <body class="bg-gray-50 text-gray-800 antialiased">
+
+    <!-- Header Section: Hero background with navigation -->
     <header id="home" class="relative h-screen flex flex-col items-center justify-center text-white overflow-hidden">
-        <div class="absolute inset-0 z-0 bg-cover bg-center"
-            style="background-image: url('https://placehold.co/1920x1080/3b82f6/ffffff?text=MDCAT+Success+-+MCQ+Clinic');"></div>
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('https://placehold.co/1920x1080/3b82f6/ffffff?text=MDCAT+Success+-+MCQ+Clinic');"></div>
         <div class="absolute inset-0 z-10 bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent"></div>
 
+        <!-- Navigation Bar -->
         <nav class="fixed top-0 left-0 w-full bg-gray-900/80 shadow-lg py-4 px-8 z-50 flex justify-between items-center backdrop-blur-sm">
-            <a href="#home" class="text-white text-3xl font-bold tracking-wide hover:text-blue-400 transition duration-300">MCQ
-                Clinic</a>
+            <a href="#home" class="text-white text-3xl font-bold tracking-wide hover:text-blue-400 transition duration-300">MCQ Clinic</a>
+            <!-- Hamburger menu for mobile -->
             <button class="menu-toggle text-white text-3xl md:hidden focus:outline-none">
                 <i class="fas fa-bars"></i>
             </button>
+            <!-- Navigation Links -->
             <ul class="nav-menu desktop-nav md:flex md:space-x-8">
-                <li><a href="#home" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Home</a></li>
-                <li><a href="#about" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">About</a></li>
-                <li><a href="#quiz" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Quiz</a></li>
-                <li><a href="#contact" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Contact</a></li>
-                <li><a href="login.html" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Login</a></li>
-                <li><a href="register.html" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Register</a></li>
+                <li><a href="#home" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Home<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
+                <li><a href="#about" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">About<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
+                <li><a href="#quiz" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Quiz<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
+                <li><a href="#contact" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Contact<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
+                <!-- Login and Register Links points to a general handler that will trigger Firebase auth -->
+                <li><a href="#" id="nav-login-link" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Login<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
+                <li><a href="#" id="nav-register-link" class="text-gray-300 hover:text-blue-400 transition duration-300 text-lg font-medium relative group">Register<span class="absolute inset-x-0 bottom-0 h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span></a></li>
             </ul>
         </nav>
 
+        <!-- Header Content -->
         <div id="home-content" class="relative z-20 text-center p-8 bg-gray-900/60 rounded-xl shadow-2xl max-w-4xl mx-auto backdrop-blur-sm animate-fade-in-up">
-            <h1 class="text-6xl font-extrabold mb-4 leading-tight drop-shadow-lg">Master Your MDCAT <span
-                    class="text-blue-300">with MCQ Clinic</span></h1>
+            <h1 class="text-6xl font-extrabold mb-4 leading-tight drop-shadow-lg">Master Your MDCAT <span class="text-blue-300">with MCQ Clinic</span></h1>
             <p class="text-xl mb-8 opacity-90">Your cutting-edge platform for high-quality multiple-choice questions and performance analytics.</p>
-            <a href="login.html" class="inline-block bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold py-4 px-10 text-xl rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transform transition-all duration-300 ease-in-out cursor-pointer group"
-                id="start-quiz-hero">
+            <a href="#" id="start-quiz-hero" class="inline-block bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold py-4 px-10 text-xl rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transform transition-all duration-300 ease-in-out cursor-pointer group">
                 Start Your Quiz Journey
                 <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"></i>
             </a>
@@ -120,39 +130,79 @@
     </header>
 
     <main id="main-content">
+        <!-- About Us Section -->
         <section id="about" class="py-20 px-8 text-center bg-gray-50">
             <h2 class="text-5xl font-bold mb-12 text-blue-700">About <span class="text-emerald-500">MCQ Clinic</span></h2>
             <p class="text-lg max-w-3xl mx-auto mb-16 leading-relaxed">MCQ Clinic is dedicated to empowering MDCAT students to achieve their academic goals. We offer an extensive library of meticulously crafted MCQs, covering Biology, Chemistry, Physics, and English, designed to optimize your preparation efficiency and effectiveness.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+                <!-- Feature Item 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col items-center">
+                    <i class="fas fa-database text-6xl text-blue-500 mb-6 drop-shadow-md"></i>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Vast Question Bank</h3>
+                    <p class="text-gray-600 leading-relaxed">Access thousands of highly relevant MCQs, meticulously prepared by subject matter experts to align with MDCAT curriculum.</p>
+                </div>
+                <!-- Feature Item 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col items-center">
+                    <i class="fas fa-chart-line text-6xl text-emerald-500 mb-6 drop-shadow-md"></i>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Insightful Analytics</h3>
+                    <p class="text-gray-600 leading-relaxed">Track your performance with detailed analytics, identify strengths and weaknesses, and focus your study efforts effectively.</p>
+                </div>
+                <!-- Feature Item 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col items-center">
+                    <i class="fas fa-stopwatch text-6xl text-purple-500 mb-6 drop-shadow-md"></i>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Simulated Exams</h3>
+                    <p class="text-gray-600 leading-relaxed">Practice under timed, exam-like conditions to improve your speed, accuracy, and confidence for the actual MDCAT.</p>
+                </div>
+            </div>
         </section>
 
+        <!-- Quiz Section -->
         <section id="quiz" class="py-20 px-8 text-center bg-gray-100">
             <h2 class="text-5xl font-bold mb-12 text-emerald-700">Ready to <span class="text-blue-500">Challenge Yourself?</span></h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+                <!-- Quiz Topic Card: Biology -->
                 <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col">
                     <h3 class="text-3xl font-semibold mb-4 text-blue-700">Biology</h3>
-                    <button class="start-quiz-btn bg-gradient-to-r from-emerald-500 to-emerald-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out self-center group"
-                        data-topic="biology">
+                    <p class="text-gray-600 leading-relaxed mb-6 flex-grow">Dive into intricate concepts of Human Anatomy, Genetics, Botany, and Zoology with our comprehensive Biology MCQs.</p>
+                    <button class="start-quiz-btn bg-gradient-to-r from-emerald-500 to-emerald-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out self-center group" data-topic="biology">
                         Start Biology Quiz
+                        <i class="fas fa-play-circle ml-2 group-hover:rotate-6 transition-transform duration-300"></i>
+                    </button>
+                </div>
+                <!-- Quiz Topic Card: Chemistry -->
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col">
+                    <h3 class="text-3xl font-semibold mb-4 text-blue-700">Chemistry</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 flex-grow">Master Organic, Inorganic, and Physical Chemistry through challenging MCQs designed to reinforce your understanding.</p>
+                    <button class="start-quiz-btn bg-gradient-to-r from-emerald-500 to-emerald-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out self-center group" data-topic="chemistry">
+                        Start Chemistry Quiz
+                        <i class="fas fa-play-circle ml-2 group-hover:rotate-6 transition-transform duration-300"></i>
+                    </button>
+                </div>
+                <!-- Quiz Topic Card: Physics -->
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col">
+                    <h3 class="text-3xl font-semibold mb-4 text-blue-700">Physics</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 flex-grow">Conquer concepts from Mechanics, Waves, Electromagnetism, to Modern Physics with our specialized question sets.</p>
+                    <button class="start-quiz-btn bg-gradient-to-r from-emerald-500 to-emerald-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out self-center group" data-topic="physics">
+                        Start Physics Quiz
                         <i class="fas fa-play-circle ml-2 group-hover:rotate-6 transition-transform duration-300"></i>
                     </button>
                 </div>
             </div>
         </section>
 
+        <!-- Contact Us Section -->
         <section id="contact" class="py-20 px-8 text-center bg-white">
             <h2 class="text-5xl font-bold mb-12 text-blue-700">Get in <span class="text-emerald-500">Touch</span></h2>
+            <p class="text-lg max-w-3xl mx-auto mb-12 leading-relaxed">Have questions, feedback, or need support? Our team is ready to assist you. Fill out the form below and we'll get back to you promptly.</p>
             <form id="contact-form" class="max-w-3xl mx-auto p-10 bg-gray-50 rounded-xl shadow-2xl">
                 <div class="mb-6">
-                    <input type="text" name="name" placeholder="Your Name" required
-                        class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+                    <input type="text" name="name" placeholder="Your Name" required class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200">
                 </div>
                 <div class="mb-6">
-                    <input type="email" name="email" placeholder="Your Email" required
-                        class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+                    <input type="email" name="email" placeholder="Your Email" required class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200">
                 </div>
                 <div class="mb-6">
-                    <textarea name="message" placeholder="Your Message" required rows="6"
-                        class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 resize-y"></textarea>
+                    <textarea name="message" placeholder="Your Message" required rows="6" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 resize-y"></textarea>
                 </div>
                 <button type="submit" class="bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold py-4 px-10 text-xl rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out cursor-pointer group">
                     Send Your Message
@@ -162,10 +212,18 @@
         </section>
     </main>
 
+    <!-- Footer Section -->
     <footer class="bg-gray-900 text-gray-300 py-10 text-center text-sm">
         <p>&copy; 2025 MCQ Clinic. All Rights Reserved. Designed with <i class="fas fa-heart text-red-500 animate-pulse"></i> for MDCAT Aspirants.</p>
+        <div class="flex justify-center space-x-6 mt-4">
+            <a href="#" class="hover:text-white transition duration-200"><i class="fab fa-facebook-f text-lg"></i></a>
+            <a href="#" class="hover:text-white transition duration-200"><i class="fab fa-twitter text-lg"></i></a>
+            <a href="#" class="hover:text-white transition duration-200"><i class="fab fa-instagram text-lg"></i></a>
+            <a href="#" class="hover:text-white transition duration-200"><i class="fab fa-linkedin-in text-lg"></i></a>
+        </div>
     </footer>
 
+    <!-- Custom Message Box Modal (replaces alert/confirm) -->
     <div id="custom-message-box" class="fixed inset-0 bg-black bg-opacity-50 z-[1001] flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
         <div class="bg-white p-8 rounded-xl shadow-2xl max-w-md w-full text-center transform scale-95 transition-transform duration-300">
             <i id="message-icon" class="text-6xl mb-4 text-blue-500"></i>
@@ -174,17 +232,39 @@
         </div>
     </div>
 
-    <script>
+    <script type="module">
+        // Import the necessary Firebase functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Global Firebase variables provided by the Canvas environment
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        let app;
+        let auth;
+        let db;
+        let currentUserId;
+
+        // Message Box elements - declared globally for accessibility
         const messageBox = document.getElementById('custom-message-box');
         const messageIcon = document.getElementById('message-icon');
         const messageText = document.getElementById('message-text');
         const closeMessageBoxBtn = document.getElementById('close-message-box');
 
-        const showMessageBox = (message, type = 'info') => {
+        /**
+         * Displays a custom message box with a specified message and type.
+         * @param {string} message - The message to display.
+         * @param {'info'|'success'|'error'} type - The type of message (influences icon and color).
+         */
+        window.showMessageBox = (message, type = 'info') => {
             messageText.innerHTML = message;
             messageBox.classList.remove('hidden', 'opacity-0');
             messageBox.classList.add('flex', 'opacity-100');
-            messageIcon.className = 'text-6xl mb-4';
+
+            messageIcon.className = 'text-6xl mb-4'; // Reset classes
             if (type === 'success') {
                 messageIcon.classList.add('fas', 'fa-check-circle', 'text-emerald-500');
             } else if (type === 'error') {
@@ -194,7 +274,10 @@
             }
         };
 
-        const hideMessageBox = () => {
+        /**
+         * Hides the custom message box.
+         */
+        window.hideMessageBox = () => {
             messageBox.classList.remove('opacity-100');
             messageBox.classList.add('opacity-0');
             setTimeout(() => {
@@ -202,50 +285,129 @@
             }, 300);
         };
 
-        document.addEventListener('DOMContentLoaded', () => {
+        /**
+         * Initializes Firebase and authenticates the user.
+         * Attempts to sign in with a custom token if available, otherwise signs in anonymously.
+         */
+        const initializeFirebaseAndAuth = async () => {
+            try {
+                // Initialize Firebase app
+                app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+
+                // Listen for authentication state changes
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        currentUserId = user.uid;
+                        console.log("Firebase user authenticated:", currentUserId);
+                        // You can perform Firestore operations here, e.g., load user-specific data
+                    } else {
+                        currentUserId = null;
+                        console.log("Firebase user signed out.");
+                    }
+                });
+
+                // Attempt to sign in with custom token if provided, otherwise anonymously
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                    console.log("Signed in with custom token.");
+                } else {
+                    await signInAnonymously(auth);
+                    console.log("Signed in anonymously.");
+                }
+            } catch (error) {
+                console.error("Error initializing Firebase or authenticating:", error);
+                showMessageBox(`Failed to connect. Please try again. Error: ${error.message}`, 'error');
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Initialize Firebase and authenticate user on page load
+            await initializeFirebaseAndAuth();
+
+            // Get quiz buttons
             const startQuizButtons = document.querySelectorAll('.start-quiz-btn');
+            const startQuizHeroButton = document.getElementById('start-quiz-hero'); // Get the hero button
+
+            // Get contact form element
             const contactForm = document.getElementById('contact-form');
+
+            // Mobile menu toggle
             const menuToggle = document.querySelector('.menu-toggle');
             const navMenu = document.querySelector('.nav-menu');
-            const navLinks = document.querySelectorAll('.nav-menu a');
+            const navLinks = document.querySelectorAll('.nav-menu a'); // Get all navigation links
 
+            // Login and Register links in the navigation
+            const navLoginLink = document.getElementById('nav-login-link');
+            const navRegisterLink = document.getElementById('nav-register-link');
+
+
+            // Event listener for "Start Quiz" hero button
+            if (startQuizHeroButton) {
+                startQuizHeroButton.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default anchor behavior
+                    showMessageBox(`You clicked to start your Quiz Journey! (This is a placeholder message)`, 'info');
+                    // In a real app, this might redirect to a quiz selection page or login.
+                });
+            }
+
+            // Event listeners for "Start Quiz" buttons in Quiz Section
             startQuizButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const topic = button.getAttribute('data-topic');
-                    showMessageBox(`You clicked to start the ${topic.charAt(0).toUpperCase() + topic.slice(1)} Quiz!`, 'info');
+                    showMessageBox(`You clicked to start the ${topic.charAt(0).toUpperCase() + topic.slice(1)} Quiz! (This is a placeholder message)`, 'info');
                 });
             });
 
+            // Event listener for message box close button
             closeMessageBoxBtn.addEventListener('click', hideMessageBox);
 
+            // Contact Form Submission
             if (contactForm) {
-                contactForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
+                contactForm.addEventListener('submit', async (e) => {
+                    e.preventDefault(); // Prevent default form submission behavior
 
                     const name = contactForm.name.value;
                     const email = contactForm.email.value;
                     const message = contactForm.message.value;
 
-                    fetch('https://your-backend-api.com/contact', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ name, email, message }),
-                    })
-                    .then(response => response.json())
-                    .then(data => {
+                    try {
+                        // Ensure Firebase is initialized and user is authenticated before attempting Firestore operation
+                        if (!db || !auth.currentUser) {
+                            showMessageBox("Firebase not ready or user not authenticated. Please try again.", 'error');
+                            return;
+                        }
+
+                        // Store contact message in Firestore
+                        // Using a public collection for contact forms, accessible by anyone (read/write if authenticated)
+                        // This assumes Firestore security rules are configured to allow writing to this path for authenticated users.
+                        const contactMessagesCollectionRef = collection(db, `artifacts/${appId}/public/data/contact_messages`);
+                        await addDoc(contactMessagesCollectionRef, {
+                            name: name,
+                            email: email,
+                            message: message,
+                            timestamp: new Date(),
+                            userId: auth.currentUser ? auth.currentUser.uid : 'anonymous' // Record user ID if authenticated
+                        });
+
                         showMessageBox('Thank you for your message! We will get back to you soon.', 'success');
-                    })
-                    .catch(error => {
-                        showMessageBox('There was an error submitting your message. Please try again later.', 'error');
-                    });
-                    contactForm.reset();
+                        contactForm.reset(); // Clear the form after submission
+                    } catch (error) {
+                        console.error("Error submitting contact form:", error);
+                        showMessageBox(`Failed to send message: ${error.message}. Please try again.`, 'error');
+                    }
                 });
             }
 
-            menuToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-            });
+            // Mobile menu toggle event
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            }
 
+            // Close mobile menu when a navigation link is clicked
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     if (navMenu.classList.contains('active')) {
@@ -253,8 +415,27 @@
                     }
                 });
             });
+
+            // Handle Login Link Click
+            if (navLoginLink) {
+                navLoginLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // In a full application, you would navigate to your login page (e.g., 'login.html')
+                    showMessageBox("Redirecting to login page...", 'info');
+                    // Example: window.location.href = 'login.html';
+                });
+            }
+
+            // Handle Register Link Click
+            if (navRegisterLink) {
+                navRegisterLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // In a full application, you would navigate to your registration page (e.g., 'register.html')
+                    showMessageBox("Redirecting to registration page...", 'info');
+                    // Example: window.location.href = 'register.html';
+                });
+            }
         });
     </script>
 </body>
-
 </html>
