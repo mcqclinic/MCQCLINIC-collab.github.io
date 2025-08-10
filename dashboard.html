@@ -10,29 +10,34 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome for modern icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyA2UZX22xqoO0xBpYxafmIAtBsun3PyF4s",
-    authDomain: "mcqclinic-4aa5a.firebaseapp.com",
-    projectId: "mcqclinic-4aa5a",
-    storageBucket: "mcqclinic-4aa5a.firebasestorage.app",
-    messagingSenderId: "1070119074861",
-    appId: "1:1070119074861:web:4fcebb6038d7fed0e20ca4",
-    measurementId: "G-QL4N8Z969X"
-  };
+    <!-- Firebase SDK (Modular Version) -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js"; // Import getAuth
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-analytics.js";
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA2UZX22xqoO0xBpYxafmIAtBsun3PyF4s",
+            authDomain: "mcqclinic-4aa5a.firebaseapp.com",
+            projectId: "mcqclinic-4aa5a",
+            storageBucket: "mcqclinic-4aa5a.firebasestorage.app",
+            messagingSenderId: "1070119074861",
+            appId: "1:1070119074861:web:4fcebb6038d7fed0e20ca4",
+            measurementId: "G-QL4N8Z969X"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app); // Get the Auth service using modular syntax
+        const analytics = getAnalytics(app);
+
+        // Make auth globally accessible for scripts outside this module, or pass it around
+        // For simplicity in this HTML structure, we can attach it to window
+        window.auth = auth;
+    </script>
     <style>
         /* Custom Tailwind Configuration (optional, if you need to extend defaults) */
         :root {
@@ -259,12 +264,14 @@
             registerLink.href = '#'; // Prevent default navigation for immediate JS handling
             registerLink.onclick = () => {
                 showMessageBox('Logging out...', 'info');
-                localStorage.removeItem('isLoggedIn');
-                localStorage.removeItem('userName');
-                localStorage.removeItem('userEmail'); // Also clear mock email
-                setTimeout(() => {
-                    window.location.href = 'index.html'; // Redirect to public home
-                }, 500);
+                // Use the globally available 'auth' object
+                window.auth.signOut().then(() => { // Using window.auth to access it
+                    // Sign-out successful. onAuthStateChanged listener will handle redirection.
+                    showMessageBox('Logged out successfully!', 'success');
+                }).catch((error) => {
+                    console.error("Logout error:", error);
+                    showMessageBox(`Logout failed: ${error.message}`, 'error');
+                });
                 return false; // Prevent default link behavior
             };
 
@@ -288,19 +295,30 @@
                 });
             });
 
-            // Check login state on page load
-            const storedIsLoggedIn = localStorage.getItem('isLoggedIn');
-            const storedUserName = localStorage.getItem('userName');
-
-            if (storedIsLoggedIn !== 'true' || !storedUserName) {
-                // If not logged in, redirect to login page (or public home which will redirect to login)
-                showMessageBox('You must be logged in to view the dashboard.', 'error');
-                setTimeout(() => {
-                    window.location.href = './login.html'; // FIX: Added './' for explicit relative path
-                }, 1500);
-            } else {
-                updateNavBarForLoginState(storedUserName); // Update nav bar for logged-in state
-            }
+            // Firebase Authentication State Listener
+            // Use the globally available 'auth' object
+            window.auth.onAuthStateChanged((user) => { // Using window.auth to access it
+                if (user) {
+                    // User is signed in.
+                    // Use user.displayName if set during registration, otherwise user.email
+                    const userName = user.displayName || user.email;
+                    // Note: localStorage for isLoggedIn/userName/userEmail is now largely redundant with Firebase auth state,
+                    // but keeping for consistency if other non-Firebase scripts rely on it.
+                    localStorage.setItem('isLoggedIn', 'true');
+                    localStorage.setItem('userName', userName);
+                    localStorage.setItem('userEmail', user.email);
+                    updateNavBarForLoginState(userName);
+                } else {
+                    // User is signed out. Redirect to login.
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('userName');
+                    localStorage.removeItem('userEmail');
+                    showMessageBox('You must be logged in to view the dashboard.', 'error');
+                    setTimeout(() => {
+                        window.location.href = './login.html';
+                    }, 1500);
+                }
+            });
 
             // Mobile menu toggle
             const menuToggle = document.querySelector('.menu-toggle');
