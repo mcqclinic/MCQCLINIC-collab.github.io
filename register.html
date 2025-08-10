@@ -77,15 +77,21 @@
 
     <script type="module">
         // Import necessary Firebase functions
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-        // Global Firebase variables provided by the Canvas environment
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        // Firebase configuration (replace with your own Firebase project details)
+        const firebaseConfig = {
+            apiKey: "AIzaSyA2UZX22xqoO0xBpYxafmIAtBsun3PyF4s",
+            authDomain: "mcqclinic-4aa5a.firebaseapp.com",
+            projectId: "mcqclinic-4aa5a",
+            storageBucket: "mcqclinic-4aa5a.firebasestorage.app",
+            messagingSenderId: "1070119074861",
+            appId: "1:1070119074861:web:4fcebb6038d7fed0e20ca4",
+            measurementId: "G-QL4N8Z969X"
+        };
 
         let app;
         let auth;
@@ -125,7 +131,7 @@
             messageBox.classList.add('opacity-0');
             setTimeout(() => {
                 messageBox.classList.add('hidden');
-            }, 300);
+            }, 300); // Wait for transition to complete
         };
 
         // Initialize Firebase app and auth service
@@ -183,13 +189,11 @@
                         });
 
                         // Store user data in Firestore (optional, but good practice for user profiles)
-                        // This uses a private collection for user-specific data
                         const userDocRef = doc(db, `artifacts/${appId}/users/${user.uid}/profile/details`);
                         await setDoc(userDocRef, {
                             fullname: fullname,
                             email: email,
                             createdAt: new Date(),
-                            // Add other profile details if needed
                         });
 
 
@@ -198,11 +202,7 @@
 
                         // Simulate redirection to login page after a short delay
                         setTimeout(() => {
-                            // In a real application, you would redirect to the login page here.
-                            // window.location.href = 'login.html'; // Example redirection
                             console.log("Redirecting to login (simulated)");
-                            // For simplicity in this self-contained example, we'll just acknowledge.
-                            // You might want to clear the form here
                             registerForm.reset();
                         }, 2000);
 
@@ -226,8 +226,6 @@
                 loginLink.addEventListener('click', (e) => {
                     e.preventDefault();
                     showMessageBox("Redirecting to login page...", 'info');
-                    // In a real application, you would navigate to the login page.
-                    // window.location.href = 'login.html'; // Example redirection
                 });
             }
 
