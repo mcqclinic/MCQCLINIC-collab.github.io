@@ -3,149 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Form</title>
+    <title>Register - MCQ Clinic</title>
     <!-- Google Fonts - Inter for clean typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome for icons (e.g., user, envelope, lock) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Tailwind CSS CDN (included as per instructions, though custom CSS is primarily used here) -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Base styles for the body, setting up a centered background layout */
+        /* Custom Tailwind Configuration (optional, if you need to extend defaults) */
+        :root {
+            --color-primary: #3b82f6; /* Tailwind blue-500 */
+            --color-accent: #10b981; /* Tailwind emerald-500 */
+            --color-bg-light: #f9fafb; /* Tailwind gray-50 */
+            --color-text-dark: #1f2937; /* Tailwind gray-900 */
+        }
+
         body {
-            font-family: 'Inter', sans-serif; /* Use Inter font as specified */
-            background-color: #1a2a4b; /* Solid dark blue background to match the website */
-            display: flex; /* Enable flexbox for centering content */
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-            height: 100vh; /* Full viewport height */
-            margin: 0; /* Remove default body margin */
-            overflow: hidden; /* Prevent scrollbars if content is larger than viewport */
+            font-family: 'Inter', sans-serif;
+            background-color: #1a2a4b; /* Dark blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            color: var(--color-text-dark); /* Default text color */
         }
 
-        /* Container for the entire form, giving it a card-like appearance */
-        .container {
-            background: white; /* White background for the form container */
-            padding: 2rem; /* Ample padding inside the container */
-            border-radius: 15px; /* Slightly rounded corners for the container */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Subtle shadow for depth */
-            text-align: center; /* Center align text content within the container */
-            width: 300px; /* Reset to a more functional fixed width for the form */
-            max-width: 90%; /* Ensure responsiveness on smaller screens */
-            box-sizing: border-box; /* Include padding and border in the element's total width and height */
-        }
-
-        /* Styling for the image at the top of the form */
-        .container img {
-            width: 80px; /* Reset image width */
-            margin-bottom: 1rem; /* Reset space below the image */
-            border-radius: 50%; /* Make the image circular (e.g., for an avatar) */
-            object-fit: cover; /* Ensure image covers the area without distortion */
-        }
-
-        /* Styling for the main heading of the form */
-        h2 {
-            margin-bottom: 1.5rem; /* Reset space below the heading */
-            color: #1e3a8a; /* Deep blue color for the heading */
-            font-weight: 700; /* Bold font weight for emphasis */
-            font-size: 1.6rem; /* Reset heading size */
-        }
-
-        /* Grouping for input fields and their icons */
-        .input-group {
-            position: relative; /* Needed to position the icon relative to the input */
-            margin-bottom: 1rem; /* Reset space between input groups */
-        }
-
-        /* Styling for the input fields */
-        .input-group input {
-            width: 100%; /* Full width within its parent */
-            padding: 0.75rem 2.5rem 0.75rem 2.5rem; /* Reset padding */
-            border: 1px solid #ccc; /* Light grey border */
-            border-radius: 50px; /* Very rounded corners for pill-shaped inputs */
-            outline: none; /* Remove outline on focus */
-            font-size: 1rem; /* Reset font size */
-            box-sizing: border-box; /* Include padding and border in the element's total width and height */
-            transition: border-color 0.3s ease; /* Smooth transition for border on focus */
-        }
-
-        .input-group input:focus {
-            border-color: #2563eb; /* Blue border on focus */
-        }
-
-        /* Styling for the icons inside the input groups */
-        .input-group i {
-            position: absolute; /* Absolute positioning within the input group */
-            left: 15px; /* Reset position from the left */
-            top: 50%; /* Vertically center */
-            transform: translateY(-50%); /* Adjust for perfect vertical centering */
-            color: #888; /* Dark grey color for icons */
-            font-size: 1.1rem; /* Reset icon size */
-        }
-
-        /* Styling for the main submit button */
-        button {
-            background: #2563eb; /* Blue background for the button */
-            color: white; /* White text color */
-            border: none; /* No border */
-            padding: 0.75rem; /* Reset padding inside the button */
-            width: 100%; /* Full width within its parent */
-            border-radius: 50px; /* Very rounded corners for a pill-shaped button */
-            font-size: 1rem; /* Reset font size */
-            cursor: pointer; /* Pointer cursor on hover */
-            transition: background 0.3s ease; /* Smooth transition for background on hover */
-            font-weight: 600; /* Semi-bold font weight */
-        }
-
-        /* Hover effect for the button */
-        button:hover {
-            background: #1d4ed8; /* Darker blue on hover */
-        }
-
-        /* Styles for the login link */
-        .login-link {
-            margin-top: 1.5rem; /* Reset space above the login link */
-            font-size: 0.9rem; /* Reset font size */
-            color: #555; /* Default text color */
-        }
-
-        .login-link a {
-            text-decoration: none; /* Remove underline */
-            color: #2563eb; /* Blue color for the link */
-            font-weight: 600; /* Semi-bold for emphasis */
-            transition: color 0.3s ease; /* Smooth transition on hover */
-        }
-
-        .login-link a:hover {
-            color: #1d4ed8; /* Darker blue on hover */
+        /* Basic rounded corners applied globally for modern feel */
+        * {
+            border-radius: 0.5rem; /* Equivalent to Tailwind's rounded-lg or rounded-xl */
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <!-- User icon provided by the user in the prompt -->
-        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="User Icon">
-        <h2>Register</h2>
-        <form action="#">
-            <div class="input-group">
-                <i class="fa fa-user"></i>
-                <input type="text" placeholder="Full Name" required>
+<body class="bg-gradient-to-br from-blue-900 to-indigo-800">
+    <div class="container bg-white p-8 rounded-2xl shadow-2xl text-center w-full max-w-sm mx-4 sm:mx-auto">
+        <!-- User icon for the registration form -->
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="User Icon" class="w-24 h-24 mx-auto mb-6 rounded-full object-cover shadow-md">
+        <h2 class="text-3xl font-extrabold mb-8 text-blue-800">Register for MCQ Clinic</h2>
+        <form id="register-form" action="#" method="POST">
+            <div class="relative mb-6">
+                <i class="fa fa-user absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg"></i>
+                <input type="text" id="fullname" name="fullname" placeholder="Full Name" required class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 text-gray-700 placeholder-gray-400">
             </div>
-            <div class="input-group">
-                <i class="fa fa-envelope"></i>
-                <input type="email" placeholder="Email" required>
+            <div class="relative mb-6">
+                <i class="fa fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg"></i>
+                <input type="email" id="email" name="email" placeholder="Email Address" required class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 text-gray-700 placeholder-gray-400">
             </div>
-            <div class="input-group">
-                <i class="fa fa-lock"></i>
-                <input type="password" placeholder="Password" required>
+            <div class="relative mb-6">
+                <i class="fa fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg"></i>
+                <input type="password" id="password" name="password" placeholder="Password" required class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 text-gray-700 placeholder-gray-400">
             </div>
-            <div class="input-group">
-                <i class="fa fa-lock"></i>
-                <input type="password" placeholder="Confirm Password" required>
+            <div class="relative mb-8">
+                <i class="fa fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg"></i>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 text-gray-700 placeholder-gray-400">
             </div>
-            <button type="submit">REGISTER</button>
+            <button type="submit" class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-3 px-8 w-full rounded-full font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                REGISTER <i class="fas fa-user-plus ml-2"></i>
+            </button>
         </form>
-        <p class="login-link">Already have an account? <a href="login.html">Login</a></p>
+        <p class="text-gray-600 mt-8 text-sm">Already have an account? <a href="#" id="login-link" class="text-blue-600 hover:text-blue-800 font-bold transition duration-300">Login</a></p>
     </div>
+
+    <!-- Custom Message Box Modal (replaces alert/confirm) -->
+    <div id="custom-message-box" class="fixed inset-0 bg-black bg-opacity-50 z-[1001] flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white p-8 rounded-xl shadow-2xl max-w-md w-full text-center transform scale-95 transition-transform duration-300">
+            <i id="message-icon" class="text-6xl mb-4 text-blue-500"></i>
+            <p id="message-text" class="text-lg mb-6 text-gray-700 font-medium"></p>
+            <button id="close-message-box" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Got It!</button>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import necessary Firebase functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+
+        // Global Firebase variables provided by the Canvas environment
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        let app;
+        let auth;
+        let db;
+
+        // Message Box elements
+        const messageBox = document.getElementById('custom-message-box');
+        const messageIcon = document.getElementById('message-icon');
+        const messageText = document.getElementById('message-text');
+        const closeMessageBoxBtn = document.getElementById('close-message-box');
+
+        /**
+         * Displays a custom message box with a specified message and type.
+         * @param {string} message - The message to display.
+         * @param {'info'|'success'|'error'} type - The type of message (influences icon and color).
+         */
+        window.showMessageBox = (message, type = 'info') => {
+            messageText.innerHTML = message;
+            messageBox.classList.remove('hidden', 'opacity-0');
+            messageBox.classList.add('flex', 'opacity-100');
+
+            messageIcon.className = 'text-6xl mb-4'; // Reset classes
+            if (type === 'success') {
+                messageIcon.classList.add('fas', 'fa-check-circle', 'text-emerald-500');
+            } else if (type === 'error') {
+                messageIcon.classList.add('fas', 'fa-times-circle', 'text-red-500');
+            } else {
+                messageIcon.classList.add('fas', 'fa-info-circle', 'text-blue-500');
+            }
+        };
+
+        /**
+         * Hides the custom message box.
+         */
+        window.hideMessageBox = () => {
+            messageBox.classList.remove('opacity-100');
+            messageBox.classList.add('opacity-0');
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 300);
+        };
+
+        // Initialize Firebase app and auth service
+        try {
+            app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            db = getFirestore(app); // Initialize Firestore
+            console.log("Firebase initialized successfully.");
+        } catch (error) {
+            console.error("Error initializing Firebase:", error);
+            showMessageBox(`Failed to initialize Firebase: ${error.message}`, 'error');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const registerForm = document.getElementById('register-form');
+            const fullnameInput = document.getElementById('fullname');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirm-password');
+            const loginLink = document.getElementById('login-link');
+
+            // Handle registration form submission
+            if (registerForm) {
+                registerForm.addEventListener('submit', async (e) => {
+                    e.preventDefault(); // Prevent default form submission
+
+                    const fullname = fullnameInput.value;
+                    const email = emailInput.value;
+                    const password = passwordInput.value;
+                    const confirmPassword = confirmPasswordInput.value;
+
+                    if (!fullname || !email || !password || !confirmPassword) {
+                        showMessageBox("All fields are required.", 'info');
+                        return;
+                    }
+
+                    if (password !== confirmPassword) {
+                        showMessageBox("Passwords do not match.", 'error');
+                        return;
+                    }
+
+                    if (password.length < 6) {
+                        showMessageBox("Password should be at least 6 characters long.", 'error');
+                        return;
+                    }
+
+                    try {
+                        // Firebase email/password registration
+                        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                        const user = userCredential.user;
+
+                        // Update user profile with display name
+                        await updateProfile(user, {
+                            displayName: fullname
+                        });
+
+                        // Store user data in Firestore (optional, but good practice for user profiles)
+                        // This uses a private collection for user-specific data
+                        const userDocRef = doc(db, `artifacts/${appId}/users/${user.uid}/profile/details`);
+                        await setDoc(userDocRef, {
+                            fullname: fullname,
+                            email: email,
+                            createdAt: new Date(),
+                            // Add other profile details if needed
+                        });
+
+
+                        console.log("User registered:", user);
+                        showMessageBox("Registration successful! You can now log in.", 'success');
+
+                        // Simulate redirection to login page after a short delay
+                        setTimeout(() => {
+                            // In a real application, you would redirect to the login page here.
+                            // window.location.href = 'login.html'; // Example redirection
+                            console.log("Redirecting to login (simulated)");
+                            // For simplicity in this self-contained example, we'll just acknowledge.
+                            // You might want to clear the form here
+                            registerForm.reset();
+                        }, 2000);
+
+                    } catch (error) {
+                        console.error("Registration error:", error.code, error.message);
+                        let errorMessage = "Registration failed. Please try again.";
+                        if (error.code === 'auth/email-already-in-use') {
+                            errorMessage = "The email address is already in use by another account.";
+                        } else if (error.code === 'auth/invalid-email') {
+                            errorMessage = "The email address is not valid.";
+                        } else if (error.code === 'auth/weak-password') {
+                            errorMessage = "The password is too weak. Please choose a stronger password.";
+                        }
+                        showMessageBox(errorMessage, 'error');
+                    }
+                });
+            }
+
+            // Handle login link click
+            if (loginLink) {
+                loginLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showMessageBox("Redirecting to login page...", 'info');
+                    // In a real application, you would navigate to the login page.
+                    // window.location.href = 'login.html'; // Example redirection
+                });
+            }
+
+            // Event listener for message box close button
+            closeMessageBoxBtn.addEventListener('click', hideMessageBox);
+        });
+    </script>
 </body>
 </html>
