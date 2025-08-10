@@ -99,29 +99,11 @@
                 <p class="text-gray-600 mb-4 flex-grow">Dive into Biology with MDCAT-specific MCQs.</p>
                 <button class="btn-start bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-full shadow transition duration-300 w-full">Start Biology Quiz</button>
             </div>
-            <div class="quiz-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer flex flex-col items-center text-center" onclick="startQuiz('chemistry')">
-                <i class="material-icons text-7xl mb-4 text-red-500">local_fire_department</i>
-                <h3 class="text-2xl font-bold mb-2 text-red-700">Chemistry</h3>
-                <p class="text-gray-600 mb-4 flex-grow">Master Chemistry concepts with our challenging MCQs.</p>
-                <button class="btn-start bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-6 rounded-full shadow transition duration-300 w-full">Start Chemistry Quiz</button>
-            </div>
-            <div class="quiz-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer flex flex-col items-center text-center" onclick="startQuiz('physics')">
-                <i class="material-icons text-7xl mb-4 text-blue-500">waves</i>
-                <h3 class="text-2xl font-bold mb-2 text-blue-700">Physics</h3>
-                <p class="text-gray-600 mb-4 flex-grow">Prepare for MDCAT Physics with specialized MCQs.</p>
-                <button class="btn-start bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-full shadow transition duration-300 w-full">Start Physics Quiz</button>
-            </div>
-            <div class="quiz-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer flex flex-col items-center text-center" onclick="startQuiz('english')">
-                <i class="material-icons text-7xl mb-4 text-purple-500">language</i>
-                <h3 class="text-2xl font-bold mb-2 text-purple-700">English</h3>
-                <p class="text-gray-600 mb-4 flex-grow">Enhance your English skills with our comprehensive MCQs.</p>
-                <button class="btn-start bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 px-6 rounded-full shadow transition duration-300 w-full">Start English Quiz</button>
-            </div>
+            <!-- Add other subjects in similar fashion (Chemistry, Physics, English) -->
         </section>
 
-        <!-- Account Section - This section will contain Profile, Purchases, and Settings -->
+        <!-- Account Section -->
         <section class="bg-white p-8 rounded-xl shadow-xl mt-8 account-section" id="account-section" style="display: none;">
-            <!-- Profile Section -->
             <div class="profile-section" id="profile-section" style="display: block;">
                 <h2 class="text-3xl font-bold mb-6 text-gray-800">Profile</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 profile-info">
@@ -138,41 +120,10 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Purchases Section -->
-            <div class="purchases-section mt-10" id="purchases-section" style="display: none;">
-                <h2 class="text-3xl font-bold mb-6 text-blue-700">Purchases</h2>
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm purchase-info">
-                    <p class="text-lg mb-2"><strong>Package:</strong> MDCAT Premium - <span class="font-bold text-emerald-600">$49.99</span></p>
-                    <p class="text-lg mb-4"><strong>Next Renewal:</strong> 12/01/2025</p>
-                    <button class="btn-renew bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300" onclick="renewSubscription()">
-                        <i class="fas fa-redo-alt mr-2"></i>Renew Subscription
-                    </button>
-                </div>
-            </div>
-
-            <!-- Settings Section -->
-            <div class="settings-section mt-10" id="settings-section" style="display: none;">
-                <h2 class="text-3xl font-bold mb-6 text-purple-700">Settings</h2>
-                <div class="bg-gray-50 p-6 rounded-lg shadow-sm setting-info space-y-4">
-                    <div>
-                        <p class="text-lg mb-2"><strong>Password:</strong> ******</p>
-                        <button class="btn-change-password bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300" onclick="changePassword()">
-                            <i class="fas fa-key mr-2"></i>Change Password
-                        </button>
-                    </div>
-                    <div>
-                        <p class="text-lg mb-2"><strong>Language:</strong> English</p>
-                        <button class="btn-change-language bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300" onclick="changeLanguage()">
-                            <i class="fas fa-globe mr-2"></i>Change Language
-                        </button>
-                    </div>
-                </div>
-            </div>
         </section>
     </div>
 
-    <!-- Custom Message Box Modal (replaces alert/confirm) -->
+    <!-- Custom Message Box Modal -->
     <div id="custom-message-box" class="fixed inset-0 bg-black bg-opacity-50 z-[1001] flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
         <div class="bg-white p-8 rounded-xl shadow-2xl max-w-md w-full text-center transform scale-95 transition-transform duration-300">
             <i id="message-icon" class="text-6xl mb-4 text-blue-500"></i>
@@ -183,38 +134,37 @@
 
     <script type="module">
         // Import the necessary Firebase functions
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-        // Global Firebase variables provided by the Canvas environment
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA2UZX22xqoO0xBpYxafmIAtBsun3PyF4s",
+            authDomain: "mcqclinic-4aa5a.firebaseapp.com",
+            projectId: "mcqclinic-4aa5a",
+            storageBucket: "mcqclinic-4aa5a.firebasestorage.app",
+            messagingSenderId: "1070119074861",
+            appId: "1:1070119074861:web:4fcebb6038d7fed0e20ca4",
+            measurementId: "G-QL4N8Z969X"
+        };
 
         let app;
         let auth;
         let db;
         let currentUserId;
 
-        // Message Box elements - declared globally for accessibility
         const messageBox = document.getElementById('custom-message-box');
         const messageIcon = document.getElementById('message-icon');
         const messageText = document.getElementById('message-text');
         const closeMessageBoxBtn = document.getElementById('close-message-box');
 
-        /**
-         * Displays a custom message box with a specified message and type.
-         * @param {string} message - The message to display.
-         * @param {'info'|'success'|'error'} type - The type of message (influences icon and color).
-         */
+        // Display custom message box
         window.showMessageBox = (message, type = 'info') => {
             messageText.innerHTML = message;
             messageBox.classList.remove('hidden', 'opacity-0');
             messageBox.classList.add('flex', 'opacity-100');
-
-            messageIcon.className = 'text-6xl mb-4'; // Reset classes
+            messageIcon.className = 'text-6xl mb-4';
             if (type === 'success') {
                 messageIcon.classList.add('fas', 'fa-check-circle', 'text-emerald-500');
             } else if (type === 'error') {
@@ -224,9 +174,6 @@
             }
         };
 
-        /**
-         * Hides the custom message box.
-         */
         window.hideMessageBox = () => {
             messageBox.classList.remove('opacity-100');
             messageBox.classList.add('opacity-0');
@@ -235,25 +182,6 @@
             }, 300);
         };
 
-        /**
-         * Hides all main content sections to prepare for showing a specific one.
-         */
-        const hideAllContentSections = () => {
-            document.getElementById('quiz-selection').style.display = 'none';
-            document.querySelector('.welcome-message').style.display = 'none';
-            document.getElementById('account-section').style.display = 'none';
-
-            // Hide all sub-sections within the account section
-            document.getElementById('profile-section').style.display = 'none';
-            document.getElementById('purchases-section').style.display = 'none';
-            document.getElementById('settings-section').style.display = 'none';
-        };
-
-        /**
-         * Initializes Firebase and authenticates the user.
-         * Attempts to sign in with a custom token if available, otherwise signs in anonymously.
-         * Updates UI elements based on authentication state.
-         */
         const initializeFirebaseAndAuth = async () => {
             try {
                 app = initializeApp(firebaseConfig);
@@ -270,7 +198,6 @@
                     if (user) {
                         currentUserId = user.uid;
                         console.log("Firebase user authenticated:", currentUserId);
-                        // Update UI with user info
                         if (displayUsername) displayUsername.textContent = user.displayName || "Authenticated Student";
                         if (accountName) accountName.textContent = user.displayName || "Authenticated Student";
                         if (accountEmail) accountEmail.textContent = user.email || "N/A";
@@ -279,7 +206,6 @@
                     } else {
                         currentUserId = null;
                         console.log("Firebase user signed out or not authenticated.");
-                        // Reset UI if no user
                         if (displayUsername) displayUsername.textContent = "Guest";
                         if (accountName) accountName.textContent = "Guest";
                         if (accountEmail) accountEmail.textContent = "N/A";
@@ -288,135 +214,41 @@
                     }
                 });
 
-                if (initialAuthToken) {
-                    await signInWithCustomToken(auth, initialAuthToken);
-                    console.log("Signed in with custom token.");
-                } else {
-                    await signInAnonymously(auth);
-                    console.log("Signed in anonymously.");
-                }
+                await signInAnonymously(auth);
             } catch (error) {
                 console.error("Error initializing Firebase or authenticating:", error);
                 showMessageBox(`Failed to connect. Error: ${error.message}`, 'error');
             }
         };
 
-        /**
-         * Handles user logout.
-         */
         window.logout = async () => {
             try {
                 await signOut(auth);
                 console.log("User signed out.");
                 showMessageBox("You have been successfully logged out.", 'success');
-                // Optional: Redirect to login page or update UI further
-                // window.location.href = 'login.html';
             } catch (error) {
                 console.error("Error during logout:", error);
                 showMessageBox(`Logout failed: ${error.message}`, 'error');
             }
         };
 
-        /**
-         * Toggles the visibility of the account dropdown menu.
-         */
         window.toggleAccountMenu = () => {
             document.getElementById('account-menu').classList.toggle('show');
         };
 
-        /**
-         * Shows the 'Profile' sub-section within the Account Information.
-         * Hides other main content sections and other account sub-sections.
-         */
         window.showProfile = () => {
-            hideAllContentSections();
             document.getElementById('account-section').style.display = 'block';
             document.getElementById('profile-section').style.display = 'block';
             showMessageBox("Showing your profile information.", 'info');
         };
 
-        /**
-         * Shows the 'Purchases' sub-section within the Account Information.
-         * Hides other main content sections and other account sub-sections.
-         */
-        window.showPurchases = () => {
-            hideAllContentSections();
-            document.getElementById('account-section').style.display = 'block';
-            document.getElementById('purchases-section').style.display = 'block';
-            showMessageBox("Showing your purchase history.", 'info');
-        };
-
-        /**
-         * Shows the 'Settings' sub-section within the Account Information.
-         * Hides other main content sections and other account sub-sections.
-         */
-        window.showSettings = () => {
-            hideAllContentSections();
-            document.getElementById('account-section').style.display = 'block';
-            document.getElementById('settings-section').style.display = 'block';
-            showMessageBox('Settings feature is coming soon!', 'info');
-        };
-
-        /**
-         * Handles edit profile action (placeholder).
-         */
-        window.editProfile = () => {
-            showMessageBox("Edit Profile functionality is coming soon!", "info");
-        };
-
-        /**
-         * Handles renew subscription action (placeholder).
-         */
-        window.renewSubscription = () => {
-            showMessageBox("Subscription renewal process is coming soon!", "info");
-        };
-
-        /**
-         * Handles change password action (placeholder).
-         */
-        window.changePassword = () => {
-            showMessageBox("Change Password functionality is coming soon!", "info");
-        };
-
-        /**
-         * Handles change language action (placeholder).
-         */
-        window.changeLanguage = () => {
-            showMessageBox("Language selection is coming soon!", "info");
-        };
-
-        /**
-         * Handles quiz selection (placeholder).
-         * @param {string} topic - The selected quiz topic (e.g., 'biology', 'chemistry').
-         */
         window.startQuiz = (topic) => {
             showMessageBox(`You clicked to start the ${topic.charAt(0).toUpperCase() + topic.slice(1)} Quiz! (This is a demo)`, 'info');
-            // In a real app, this would redirect to a quiz page or load quiz questions dynamically
-        };
-
-        // Close the dropdown menu if the user clicks outside of it
-        window.onclick = function(event) {
-            if (!event.target.matches('.btn-account') && !event.target.closest('.account-dropdown')) {
-                const dropdowns = document.getElementsByClassName('account-menu');
-                for (let i = 0; i < dropdowns.length; i++) {
-                    const openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
-            }
         };
 
         document.addEventListener('DOMContentLoaded', async () => {
-            // Initialize Firebase and authenticate user on page load
             await initializeFirebaseAndAuth();
-
-            // Event listener for message box close button
             closeMessageBoxBtn.addEventListener('click', hideMessageBox);
-
-            // By default, show the quiz selection when the page loads
-            document.getElementById('quiz-selection').style.display = 'grid'; // Assuming it's a grid layout
-            document.querySelector('.welcome-message').style.display = 'block';
         });
     </script>
 </body>
