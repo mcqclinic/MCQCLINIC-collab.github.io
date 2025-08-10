@@ -99,11 +99,41 @@
                 <p class="text-gray-600 mb-4 flex-grow">Dive into Biology with MDCAT-specific MCQs.</p>
                 <button class="btn-start bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-full shadow transition duration-300 w-full">Start Biology Quiz</button>
             </div>
-            <!-- Add other subjects in similar fashion (Chemistry, Physics, English) -->
+            <!-- Quiz Topic Card: Chemistry -->
+            <div class="quiz-card bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col">
+                <i class="material-icons text-7xl mb-4 text-red-500">local_fire_department</i>
+                <h3 class="text-3xl font-semibold mb-4 text-red-700">Chemistry</h3>
+                <p class="text-gray-600 leading-relaxed mb-6 flex-grow">Master Organic, Inorganic, and Physical Chemistry through challenging MCQs designed to reinforce your understanding.</p>
+                <button class="btn-start bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out self-center group" data-topic="chemistry">
+                    Start Chemistry Quiz
+                    <i class="fas fa-play-circle ml-2 group-hover:rotate-6 transition-transform duration-300"></i>
+                </button>
+            </div>
+            <!-- Quiz Topic Card: Physics -->
+            <div class="quiz-card bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col">
+                <i class="material-icons text-7xl mb-4 text-blue-500">waves</i>
+                <h3 class="text-3xl font-semibold mb-4 text-blue-700">Physics</h3>
+                <p class="text-gray-600 leading-relaxed mb-6 flex-grow">Conquer concepts from Mechanics, Waves, Electromagnetism, to Modern Physics with our specialized question sets.</p>
+                <button class="btn-start bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out self-center group" data-topic="physics">
+                    Start Physics Quiz
+                    <i class="fas fa-play-circle ml-2 group-hover:rotate-6 transition-transform duration-300"></i>
+                </button>
+            </div>
+            <!-- Quiz Topic Card: English -->
+            <div class="quiz-card bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col">
+                <i class="material-icons text-7xl mb-4 text-purple-500">language</i>
+                <h3 class="text-3xl font-semibold mb-4 text-purple-700">English</h3>
+                <p class="text-gray-600 leading-relaxed mb-6 flex-grow">Enhance your English grammar, vocabulary, and comprehension skills with our comprehensive MCQs.</p>
+                <button class="btn-start bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transform transition-all duration-300 ease-in-out self-center group" data-topic="english">
+                    Start English Quiz
+                    <i class="fas fa-play-circle ml-2 group-hover:rotate-6 transition-transform duration-300"></i>
+                </button>
+            </div>
         </section>
 
         <!-- Account Section -->
         <section class="bg-white p-8 rounded-xl shadow-xl mt-8 account-section" id="account-section" style="display: none;">
+            <!-- Profile Section -->
             <div class="profile-section" id="profile-section" style="display: block;">
                 <h2 class="text-3xl font-bold mb-6 text-gray-800">Profile</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 profile-info">
@@ -116,6 +146,37 @@
                     <div class="flex items-center justify-center">
                          <button class="btn-edit bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300" onclick="editProfile()">
                             <i class="fas fa-edit mr-2"></i>Edit Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Purchases Section -->
+            <div class="purchases-section mt-10" id="purchases-section" style="display: none;">
+                <h2 class="text-3xl font-bold mb-6 text-blue-700">Purchases</h2>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm purchase-info">
+                    <p class="text-lg mb-2"><strong>Package:</strong> MDCAT Premium - <span class="font-bold text-emerald-600">$49.99</span></p>
+                    <p class="text-lg mb-4"><strong>Next Renewal:</strong> 12/01/2025</p>
+                    <button class="btn-renew bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300" onclick="renewSubscription()">
+                        <i class="fas fa-redo-alt mr-2"></i>Renew Subscription
+                    </button>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div class="settings-section mt-10" id="settings-section" style="display: none;">
+                <h2 class="text-3xl font-bold mb-6 text-purple-700">Settings</h2>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm setting-info space-y-4">
+                    <div>
+                        <p class="text-lg mb-2"><strong>Password:</strong> ******</p>
+                        <button class="btn-change-password bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300" onclick="changePassword()">
+                            <i class="fas fa-key mr-2"></i>Change Password
+                        </button>
+                    </div>
+                    <div>
+                        <p class="text-lg mb-2"><strong>Language:</strong> English</p>
+                        <button class="btn-change-language bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300" onclick="changeLanguage()">
+                            <i class="fas fa-globe mr-2"></i>Change Language
                         </button>
                     </div>
                 </div>
@@ -134,20 +195,14 @@
 
     <script type="module">
         // Import the necessary Firebase functions
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-        import { getFirestore } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Your Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyA2UZX22xqoO0xBpYxafmIAtBsun3PyF4s",
-            authDomain: "mcqclinic-4aa5a.firebaseapp.com",
-            projectId: "mcqclinic-4aa5a",
-            storageBucket: "mcqclinic-4aa5a.firebasestorage.app",
-            messagingSenderId: "1070119074861",
-            appId: "1:1070119074861:web:4fcebb6038d7fed0e20ca4",
-            measurementId: "G-QL4N8Z969X"
-        };
+        // Global Firebase variables provided by the Canvas environment
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
         let app;
         let auth;
@@ -182,6 +237,20 @@
             }, 300);
         };
 
+        /**
+         * Hides all main content sections to prepare for showing a specific one.
+         */
+        const hideAllContentSections = () => {
+            document.getElementById('quiz-selection').style.display = 'none';
+            document.querySelector('.welcome-message').style.display = 'none';
+            document.getElementById('account-section').style.display = 'none';
+
+            // Hide all sub-sections within the account section
+            document.getElementById('profile-section').style.display = 'none';
+            document.getElementById('purchases-section').style.display = 'none';
+            document.getElementById('settings-section').style.display = 'none';
+        };
+
         const initializeFirebaseAndAuth = async () => {
             try {
                 app = initializeApp(firebaseConfig);
@@ -214,7 +283,13 @@
                     }
                 });
 
-                await signInAnonymously(auth);
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                    console.log("Signed in with custom token.");
+                } else {
+                    await signInAnonymously(auth);
+                    console.log("Signed in anonymously.");
+                }
             } catch (error) {
                 console.error("Error initializing Firebase or authenticating:", error);
                 showMessageBox(`Failed to connect. Error: ${error.message}`, 'error');
@@ -237,18 +312,67 @@
         };
 
         window.showProfile = () => {
+            hideAllContentSections();
             document.getElementById('account-section').style.display = 'block';
             document.getElementById('profile-section').style.display = 'block';
             showMessageBox("Showing your profile information.", 'info');
         };
 
+        window.showPurchases = () => {
+            hideAllContentSections();
+            document.getElementById('account-section').style.display = 'block';
+            document.getElementById('purchases-section').style.display = 'block';
+            showMessageBox("Showing your purchase history.", 'info');
+        };
+
+        window.showSettings = () => {
+            hideAllContentSections();
+            document.getElementById('account-section').style.display = 'block';
+            document.getElementById('settings-section').style.display = 'block';
+            showMessageBox('Settings feature is coming soon!', 'info');
+        };
+
+        window.editProfile = () => {
+            showMessageBox("Edit Profile functionality is coming soon!", "info");
+        };
+
+        window.renewSubscription = () => {
+            showMessageBox("Subscription renewal process is coming soon!", "info");
+        };
+
+        window.changePassword = () => {
+            showMessageBox("Change Password functionality is coming soon!", "info");
+        };
+
+        window.changeLanguage = () => {
+            showMessageBox("Language selection is coming soon!", "info");
+        };
+
+
         window.startQuiz = (topic) => {
             showMessageBox(`You clicked to start the ${topic.charAt(0).toUpperCase() + topic.slice(1)} Quiz! (This is a demo)`, 'info');
+        };
+
+        // Close the dropdown menu if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.btn-account') && !event.target.closest('.account-dropdown')) {
+                const dropdowns = document.getElementsByClassName('account-menu');
+                for (let i = 0; i < dropdowns.length; i++) {
+                    const openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
         };
 
         document.addEventListener('DOMContentLoaded', async () => {
             await initializeFirebaseAndAuth();
             closeMessageBoxBtn.addEventListener('click', hideMessageBox);
+
+            // By default, show the quiz selection when the page loads
+            document.getElementById('quiz-selection').style.display = 'grid'; // Assuming it's a grid layout
+            document.querySelector('.welcome-message').style.display = 'block';
         });
     </script>
 </body>
